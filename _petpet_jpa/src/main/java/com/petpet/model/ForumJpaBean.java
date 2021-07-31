@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -27,15 +28,19 @@ public class ForumJpaBean {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Taipei")
 	private String text_sub;
 	private String text_type;
+	@Lob
 	private byte[] text_image;
+	private String text_image_name;
 
 	
 	public ForumJpaBean() {
 		super();
 	}
 
+
+
 	public ForumJpaBean(Long textId, String email, String title, String text, Date text_time, String text_sub,
-			String text_type, byte[] text_image) {
+			String text_type, byte[] text_image, String text_image_name) {
 		super();
 		this.textId = textId;
 		this.email = email;
@@ -45,7 +50,22 @@ public class ForumJpaBean {
 		this.text_sub = text_sub;
 		this.text_type = text_type;
 		this.text_image = text_image;
+		this.text_image_name = text_image_name;
 	}
+
+
+
+	public String getText_image_name() {
+		return text_image_name;
+	}
+
+
+
+	public void setText_image_name(String text_image_name) {
+		this.text_image_name = text_image_name;
+	}
+
+
 
 	public Long getTextId() {
 		return textId;
@@ -111,11 +131,15 @@ public class ForumJpaBean {
 		this.text_image = text_image;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "ForumJpaBean [textId=" + textId + ", email=" + email + ", title=" + title + ", text=" + text
 				+ ", text_time=" + text_time + ", text_sub=" + text_sub + ", text_type=" + text_type + ", text_image="
-				+ Arrays.toString(text_image) + "]";
+				+ Arrays.toString(text_image) + ", text_image_name=" + text_image_name + "]";
 	}
+
+
 
 }
