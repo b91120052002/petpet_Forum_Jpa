@@ -6,5 +6,4 @@ import com.petpet.model.ForumJpaBean;
 
 public interface ForumJpaRepository extends JpaRepository<ForumJpaBean, Long> {
 
-
 }

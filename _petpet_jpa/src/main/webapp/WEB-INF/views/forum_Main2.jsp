@@ -41,16 +41,11 @@
     </style>
     <!-- 新增開始 -->
     <style type="text/css">
-		#contentTable{
-			table-layout:fixed; /* bootstrap-table設定colmuns中某列的寬度無效時，需要給整個表設定css屬性 */
-			word-break:break-all; word-wrap:break-all; /* 自動換行 */
-		}
+	#contentTable{
+		table-layout:fixed; /* bootstrap-table設定colmuns中某列的寬度無效時，需要給整個表設定css屬性 */
+		word-break:break-all; word-wrap:break-all; /* 自動換行 */
+	}
 	</style>
-	<style>
-		.picview{
-    	max-height:80px;
-		}
-</style>
 	<!-- 新增結束 -->
 </head>
 
@@ -192,8 +187,8 @@
 <thead>
 <tr>
 <th scope="col" style="width:80px;">子版</th>
-<th scope="col" style="width:80px;"></th>
-<th scope="col" style="width:160px;"></th>
+<th scope="col" style="width:80px;">類型</th>
+<th scope="col" style="width:160px;">文章列表</th>
 <th scope="col" style="width:80px;">更新時間</th>
 </tr>
 </thead>
@@ -201,7 +196,7 @@
 <tbody>
 <tr>
 <th scope="row">${fb.text_sub}</th>
-<td><a href="<c:url value='/text' />?textId=${fb.textId}"><img class="picview" src="${pageContext.request.contextPath}/product/display/${fb.textId}" /></a></td>
+<td>${fb.text_type}</td>
 <td><div><a href="<c:url value='/text' />?textId=${fb.textId}"> ${fb.title}</a></div><p>${fb.text}</p></td>
 <td>${fb.text_time}</td>
 </tr>

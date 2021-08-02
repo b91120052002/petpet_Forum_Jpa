@@ -25,7 +25,6 @@ public class ForumJpaBean {
 	private String text;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Taipei")
 	private Date text_time;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Taipei")
 	private String text_sub;
 	private String text_type;
 	@Lob
