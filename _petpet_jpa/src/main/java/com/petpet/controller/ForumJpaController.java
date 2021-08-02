@@ -28,9 +28,11 @@ public class ForumJpaController {
 	ForumJpaService forumJpaService;
 
 	@PostMapping("/update")
-	public String update(@RequestParam(name = "textId") Long textId, @RequestParam(name = "title") String title,
-			@RequestParam(name = "text") String text, @RequestParam(name = "text_sub") String text_sub,
-			@RequestParam(name = "text_type") String text_type, Model m) {
+	public String update(@RequestParam(name = "textId") Long textId, 
+							@RequestParam(name = "title") String title,
+							@RequestParam(name = "text") String text, 
+							@RequestParam(name = "text_sub") String text_sub,
+							@RequestParam(name = "text_type") String text_type, Model m) {
 		ForumJpaBean fb = new ForumJpaBean();
 		System.out.println("textId = " + textId);
 		fb.setTextId(textId);
@@ -100,36 +102,5 @@ public class ForumJpaController {
 		m.addAttribute("fbs1", fbs);
 		return "forum_Main";
 	}
-
-//	@PutMapping("/text/{textId}")
-//	public @ResponseBody Map<String, String> update(
-//			  @RequestBody ForumBean fb,
-//			  @PathVariable Integer textId
-//			) {
-//		Map<String, String> map = new HashMap<>();
-//		String result = "";
-//		try {
-//		   forumService.update(fb);
-//		   result = "修改成功";
-//		   map.put("success", result);
-//		} catch(Exception e) {
-//		   result = e.getMessage();	
-//		   map.put("fail", result);
-//		}
-//		return map;
-//	}
-
-//	@ModelAttribute("update")
-//	public ForumBean getForumBean(
-//			@RequestParam(value="textId", required = false) Integer textId
-//				) {
-//		ForumBean fb = null;
-//		if (textId == null) {
-//			fb = new ForumBean();
-//		}else {
-//			fb = forumService.findById(textId);
-//		}
-//		return fb;
-//	}
 
 }

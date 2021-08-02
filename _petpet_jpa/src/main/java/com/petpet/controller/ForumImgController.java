@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Optional;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -36,10 +37,57 @@ public class ForumImgController {
 	@Autowired
 	ForumJpaService forumJpaService;
 	
+	@RequestMapping(path="/updatefile", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<?> upldateproduct (	@RequestParam("textId") Long textId,
+															@RequestParam("description") String description, 
+															@RequestParam("title") String title, 
+															@RequestParam("text") String text,
+															@RequestParam("text_sub") String text_sub,
+															@RequestParam("text_type") String text_type,
+															final @RequestParam(value="image",  required = false) MultipartFile file,
+															Model model 
+															){
+		try {
+
+			Date createDate = new Date();  //變成是現在的修改時間匯入
+
+			ForumJpaBean product = forumJpaService.getTextById(textId).orElse(null);
+				
+			byte[] imageData1= product.getText_image();
+			
+			product.setText_image(imageData1);
+			System.out.println("這裡是image:"+imageData1);
+			//檔案不為空才讀取檔案，否則就用原本資料庫裏面的檔案
+			if (!file.isEmpty()) {	
+				byte[] imageData = file.getBytes();
+				product.setText_image(imageData);
+			}
+			product.setText_image_name(description);
+			
+			product.setText_time(createDate);
+			product.setTitle(title);
+			product.setText(text);
+			product.setText_sub(text_sub);
+			product.setText_type(text_type);
+			forumJpaService.save(product);
+			log.info("HttpStatus===" + new ResponseEntity<>(HttpStatus.OK));
+			return new ResponseEntity<>("Product Saved With File", HttpStatus.OK);
+		}	
+		
+		catch (Exception e) {
+			e.printStackTrace();
+			log.info("Exception: " + e);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			}
+		}
+	
 	@GetMapping("/product/display/{textId}")  // 用來匯出資料庫的圖片
 	@ResponseBody
-	public void showImage(@PathVariable("textId") Long textId, HttpServletResponse response, Optional<ForumJpaBean> product) throws ServletException, IOException {
-		log.info("text_id :: " + textId);
+	public void showImage(@PathVariable("textId") Long textId, 
+							HttpServletResponse response, 
+							Optional<ForumJpaBean> product
+							) throws ServletException, IOException {
+		log.info("textId :: " + textId);
 		product = forumJpaService.getTextById(textId);
 		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
 		response.getOutputStream().write(product.get().getText_image());

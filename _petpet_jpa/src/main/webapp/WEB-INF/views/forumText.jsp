@@ -8,6 +8,7 @@
 <!-- 新增開始 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- 新增結束 -->
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -187,18 +188,18 @@ function updateText(textId) {
 </script>
 <div align='center'>
 <h3>選取文章</h3>
-<form action="<c:url value='/update' />" method="post">
-<input type="hidden" name="textId" value="${fbs1.textId}" />
+<form id="form">
+<input type="hidden" id="textId" name="textId" value="${fbs1.textId}" />
 
   <div class="form-group">
-    <label for="exampleFormControlInput1">文章標題</label>
+    <label for="title">文章標題</label>
     <input type="text" name="title" required 
-    	class="form-control" id="exampleFormControlInput1" value="${fbs1.title}">
+    	class="form-control" id="title" value="${fbs1.title}">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect1">請選子版</label>
+    <label for="text_sub">請選子版</label>
     <select name="text_sub"
-    	class="form-control" id="exampleFormControlSelect1">
+    	class="form-control" id="text_sub">
       <option value="${fbs1.text_sub}" selected >${fbs1.text_sub}</option>	
       <option value="貓咪">貓咪</option>
       <option value="狗狗">狗狗</option>
@@ -207,9 +208,9 @@ function updateText(textId) {
     </select>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect2">請選類型</label>
+    <label for="text_type">請選類型</label>
     <select name="text_type"
-    	class="form-control" id="exampleFormControlSelect2">
+    	class="form-control" id="text_type">
       <option value="${fbs1.text_type}" selected >${fbs1.text_type}</option>	
       <option value="問題">問題</option>
       <option value="情報">情報</option>
@@ -219,11 +220,27 @@ function updateText(textId) {
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlTextarea1">文章內容</label>
+    <label for="text">文章內容</label>
     <textarea id="text" name="text" required
-    	 class="form-control" id="exampleFormControlTextarea1" ></textarea>
+    	 class="form-control" id="text" ></textarea>
   </div>
-  <button type="submit" onclick="updateText(${fbs1.textId})" >更新</button>
+  <!-- 圖片 -->
+  <div class="col box">
+  	<img src="${pageContext.request.contextPath}/product/display/${fbs1.textId}" class="image" alt=""> 
+  </div>
+  <div class="col box">
+  	<input type="file" class="form-control" placeholder="" name="image" id="imgupload" required="required">
+  </div>
+  <div class="col box">
+  	<label class="col-form-label fontsize">商品圖片預覽</label>
+    <img id="demo"/>
+    <p id="error_file"></p>		
+  </div>
+  <div class="col box">
+  <textarea class="form-control" placeholder="" id="description" rows="3" cols="45" name="description" required="required">${description}</textarea>
+  </div>
+  
+  <button type="submit" id="submit" onclick="updateText(${fbs1.textId})" >更新</button>
   <input type="button" value="刪除" name="delete" onclick="deleteText(${fbs1.textId})">
   <br>
   <a href="<c:url value='/' />">回首頁</a>
@@ -231,12 +248,62 @@ function updateText(textId) {
 </div>
 <script>
 
-  $(document).ready(function() {
-    CKEDITOR.replace('text');
-    CKEDITOR.instances["text"].setData("${fbs1.text}");
-    console.log(CKEDITOR.instances["text"].getData())
-  });
+  $("#text").val("${fbs1.text}");
+//  $(document).ready(function() {
+//    CKEDITOR.replace('text');
+//    CKEDITOR.instances["text"].setData("${fbs1.text}");
+//  });
   
+  // 預覽功能 ，使用FileReader物件 
+  $('#imgupload').change(function() {   
+	  var file = $('#imgupload')[0].files[0];
+	  var reader = new FileReader;
+	  reader.onload = function(e) {
+	    $('#demo').attr('src', e.target.result);
+	  };
+	  reader.readAsDataURL(file);
+	});
+
+  // AJAX送出新增表單
+  $(document).ready(function() {
+    $("#submit").on("click", function() {
+    	$("#submit").prop("disabled", true);//上傳一次
+    	var title       = $("#title").val(); 
+    	var text        = $("#text").val(); 
+    	var text_sub    = $("#text_sub").val(); 
+    	var text_type   = $("#text_type").val(); 
+    	var file        = $("#imageupload").val(); 
+        var description = $("#description").val();
+        var form = $("#form").serialize();
+    	var data = new FormData($("#form")[0]);
+
+                    $.ajax({
+                        type: 'POST',
+                        enctype: 'multipart/form-data',
+                        data: data,
+                        url: "/petpet/forum/updatefile", 
+                        processData: false,  //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
+                        contentType: false,  //默认值为contentType = "application/x-www-form-urlencoded".在默认情况下，内容编码类型满足大多数情况。但要上傳檔案，要設為False
+                        cache: false,
+                        success: function(data, statusText, xhr) {  //	請求成功時執行函式,  前面新增的FormData物件放在第一個 ，第二個我不知道，第三個XMLHttpRequest(XHR) 物件發送
+                        console.log(xhr.status);
+                        if(xhr.status == "200") {
+                            setTimeout( "self.location.reload(); ",10000);  // Reload或轉到其他頁面
+							$("#message").html("修改成功");
+							$("#message").css("font-color","green");
+                         }	   
+                        },
+                        error: function(e) {
+							console.log('錯誤');
+							
+                            // location.reload();
+                        }
+                    });
+  
+            });
+        });
+
+  		
 </script>
 
 
