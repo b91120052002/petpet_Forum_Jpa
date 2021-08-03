@@ -42,7 +42,21 @@
 	margin-bottom: 100px;
 }
 </style>
-
+<!-- 新增開始 -->
+	<style>
+		.picview{
+    	max-height:120px;
+		}
+	</style>
+	<style>
+	 fieldset{
+            width: 50%;
+            border-radius: 20px;
+            border:1px solid silver;
+            margin: auto;
+        }
+    </style>
+<!-- 新增結束 -->
 </head>
 
 <body>
@@ -186,6 +200,8 @@ function updateText(textId) {
     return false;
 }
 </script>
+
+<fieldset>
 <div align='center'>
 <h3>選取文章</h3>
 <form id="form">
@@ -226,7 +242,7 @@ function updateText(textId) {
   </div>
   <!-- 圖片 -->
   <div class="col box">
-  	<img src="${pageContext.request.contextPath}/product/display/${fbs1.textId}" class="image" alt=""> 
+  	<img class="picview" src="${pageContext.request.contextPath}/product/display/${fbs1.textId}" class="image" alt=""> 
   </div>
   <div class="col box">
   	<input type="file" class="form-control" placeholder="" name="image" id="imgupload" required="required">
@@ -236,16 +252,16 @@ function updateText(textId) {
     <img id="demo"/>
     <p id="error_file"></p>		
   </div>
-  <div class="col box">
-  <textarea class="form-control" placeholder="" id="description" rows="3" cols="45" name="description" required="required">${description}</textarea>
-  </div>
-  
-  <button type="submit" id="submit" onclick="updateText(${fbs1.textId})" >更新</button>
-  <input type="button" value="刪除" name="delete" onclick="deleteText(${fbs1.textId})">
+ 
+  <div id="message" class="text-center" style="color: green;"></div>
+  <button type="submit" id="submit" class="btn btn-success" onclick="updateText(${fbs1.textId})" >更新</button>
+  <input type="button" value="刪除" name="delete" class="btn btn-danger" onclick="deleteText(${fbs1.textId})">
   <br>
   <a href="<c:url value='/' />">回首頁</a>
 </form>
 </div>
+</fieldset>
+
 <script>
 
   $("#text").val("${fbs1.text}");
@@ -273,7 +289,6 @@ function updateText(textId) {
     	var text_sub    = $("#text_sub").val(); 
     	var text_type   = $("#text_type").val(); 
     	var file        = $("#imageupload").val(); 
-        var description = $("#description").val();
         var form = $("#form").serialize();
     	var data = new FormData($("#form")[0]);
 
@@ -290,7 +305,6 @@ function updateText(textId) {
                         if(xhr.status == "200") {
                             setTimeout( "self.location.reload(); ",10000);  // Reload或轉到其他頁面
 							$("#message").html("修改成功");
-							$("#message").css("font-color","green");
                          }	   
                         },
                         error: function(e) {

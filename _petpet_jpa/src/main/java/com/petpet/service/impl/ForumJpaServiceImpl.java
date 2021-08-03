@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.petpet.model.ForumJpaBean;
@@ -36,7 +37,7 @@ public class ForumJpaServiceImpl implements ForumJpaService {
 
 	@Override
 	public List<ForumJpaBean> findAll() {
-		return forumJpaRepository.findAll();
+		return forumJpaRepository.findAll(Sort.by(Sort.Direction.DESC, "textId"));
 	}
 
 	@Override
@@ -48,5 +49,8 @@ public class ForumJpaServiceImpl implements ForumJpaService {
 	public Optional<ForumJpaBean> getTextById(Long textId) {
 		return forumJpaRepository.findById(textId); // 由於在ProductRepository有繼承JpaRepository方法，這邊就可以直接使用方法
 	}
+	
+	
 
+	
 }

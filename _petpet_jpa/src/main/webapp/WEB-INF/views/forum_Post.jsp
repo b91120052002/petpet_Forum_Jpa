@@ -44,7 +44,21 @@
 	margin-bottom: 100px;
 }
 </style>
-
+<!-- 新增開始 -->
+	<style>
+		.picview{
+    	max-height:120px;
+		}
+	</style>
+	<style>
+	 fieldset{
+            width: 50%;
+            border-radius: 20px;
+            border:1px solid silver;
+            margin: auto;
+        }
+    </style>
+<!-- 新增結束 -->
 </head>
 
 <body>
@@ -171,8 +185,8 @@
 	</div>
 
 	<!----------------------------------------------NEW!!Strat!!-------------------------------------------->
-
-	<div align='center'>
+<fieldset>
+	<div align='center' >
 		<h3>發表新文章</h3>
 		<form id="form">
 			<div class="form-group">
@@ -207,12 +221,7 @@
 					id="text" placeholder="それは、未来を取り戻す物語。"></textarea>
 			</div>
 			<!-- 圖片 -->
-			<!-- @請求參數增加:1.description 2.image -->
-			<div class="col-md-6 col-sm-6 contact-form1 form-group">
-				<label class="col-form-label">敘述</label>
-				<textarea class="form-control" placeholder="Product Description" id="description" rows="3" cols="45" name="description"></textarea>
-				<p id="error_description"></p>
-			</div>
+			<!-- @請求參數增加:1.image -->
 			<div class="form-group">
 				<label class="col-form-label">Image</label> 
 				<input type="file" class="form-control" placeholder="" name="image" id="imgupload">
@@ -223,12 +232,13 @@
 				<img id="demo" />
 				<p id="error_file"></p>
 			</div>
-			<input type="submit" id="submit" value="發文" /> <br>
+			<input type="submit" id="submit" class="btn btn-success" value="發文" /> <br>
 			<div id="success" class="text-center" style="color: green;"></div>
 			<div id="error" class="text-center" style="color: red;"></div>
 			<br> <a href="<c:url value='/' />">回首頁</a>
 		</form>
 	</div>
+</fieldset>	
 	<script>
 
 		//文字編輯器
@@ -255,7 +265,6 @@ $(document).ready(function() {
     	var text_sub    = $("#text_sub").val(); 
     	var text_type   = $("#text_type").val(); 
     	var file        = $("#imageupload").val(); 
-        var description = $("#description").val();
         var form = $("#form").serialize();
         console.log(form);
         // 利用JS的FormData格式來序列化(serialize) input 當中的 name 與 file ，才可以用AJAX方式進行檔案上傳
@@ -264,17 +273,15 @@ $(document).ready(function() {
     	//alert(data);
         $('#loader').show();
         //如果表格內input的四個如果有空的話，顯示下面的CSS格式，把Submit鎖住，Loader藏起來，邊框改為紅色，Error messgae跳出字串
-        if (description === "") {
+        if (title === "" || text === "") {
         	$("#submit").prop("disabled", false);
             $('#loader').hide();
             $("#name").css("border-color", "red");
             $("#image").css("border-color", "red");
             $("#price").css("border-color", "red");
-            $("#description").css("border-color", "red");
             $("#error_name").html("Please fill the required field.");
             $("#error_file").html("Please fill the required field.");
             $("#error_price").html("Please fill the required field.");
-            $("#error_description").html("Please fill the required field.");
         } else {
             
             //jquery 發送ajax的語法https://ithelp.ithome.com.tw/articles/10226692
@@ -293,7 +300,7 @@ $(document).ready(function() {
                         	$("#form")[0].reset();
                         	$('#success').css('display','block');
                             $("#error").text("");
-                            $("#success").html("Product Inserted Succsessfully."); //錯誤訊息
+                            $("#success").html("新增完成"); //錯誤訊息
                             $('#success').delay(5000).fadeOut('slow');
                             // setTimeout( "self.location.reload(); ",5000);  // Reload或轉到其他頁面
                          }	   

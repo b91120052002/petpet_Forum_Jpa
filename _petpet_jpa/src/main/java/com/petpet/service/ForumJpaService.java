@@ -18,5 +18,5 @@ public interface ForumJpaService {
 	List<ForumJpaBean> findAll();
 
 	ForumJpaBean findById(Long textId);
-
+	
 }

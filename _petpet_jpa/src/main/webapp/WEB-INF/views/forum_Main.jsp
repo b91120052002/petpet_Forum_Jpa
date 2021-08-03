@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +52,14 @@
 		.picview{
     	max-height:80px;
 		}
-</style>
+	</style>
+	<style>
+	 fieldset{
+            width: 50%;
+            border-radius: 20px;
+            margin: auto;
+        }
+    </style>
 	<!-- 新增結束 -->
 </head>
 
@@ -184,33 +193,34 @@
 
 
 
-
+<fieldset>
 <div align='center'>
-<h2><a style="color:red" href="<c:url value='/post_Page'  />">發表新文章</a></h2>
-<hr>
-<table id="contentTable" class="table table-striped table-bordered table-condensed ">
+
+<table id="contentTable" class="table table-striped table-condensed ">
 <thead>
+ 
 <tr>
-<th scope="col" style="width:80px;">子版</th>
+<th scope="col" style="width:80px;"><a style="color:red" href="<c:url value='/post_Page'  />"><input type="submit" id="submit" class="btn btn-success" value="發文" /> <br></a></th>
 <th scope="col" style="width:80px;"></th>
 <th scope="col" style="width:160px;"></th>
-<th scope="col" style="width:80px;">更新時間</th>
+<th scope="col" style="width:80px;"></th>
 </tr>
+
 </thead>
 <c:forEach var='fb' items='${fbs1}'>
 <tbody>
 <tr>
-<th scope="row">${fb.text_sub}</th>
+<th scope="row">${fb.text_sub}/${fb.text_type}</th>
 <td><a href="<c:url value='/text' />?textId=${fb.textId}"><img class="picview" src="${pageContext.request.contextPath}/product/display/${fb.textId}" /></a></td>
 <td><div><a href="<c:url value='/text' />?textId=${fb.textId}"> ${fb.title}</a></div><p>${fb.text}</p></td>
-<td>${fb.text_time}</td>
+<td><fmt:formatDate pattern="MM/dd HH:mm" value="${fb.text_time}" /></td>
 </tr>
 </tbody>     
 </c:forEach>
 </table>
 <hr>
 </div>
-
+</fieldset>
 
 
 

@@ -39,7 +39,6 @@ public class ForumImgController {
 	
 	@RequestMapping(path="/updatefile", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> upldateproduct (	@RequestParam("textId") Long textId,
-															@RequestParam("description") String description, 
 															@RequestParam("title") String title, 
 															@RequestParam("text") String text,
 															@RequestParam("text_sub") String text_sub,
@@ -62,7 +61,6 @@ public class ForumImgController {
 				byte[] imageData = file.getBytes();
 				product.setText_image(imageData);
 			}
-			product.setText_image_name(description);
 			
 			product.setText_time(createDate);
 			product.setTitle(title);
@@ -103,7 +101,6 @@ public class ForumImgController {
 	
 	@RequestMapping(path="/uploadfile", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> uploadproduct (final @RequestParam("image") MultipartFile file,
-																@RequestParam("description") String description, 
 																@RequestParam("title") String title, 
 																@RequestParam("text") String text,
 																@RequestParam("text_sub") String text_sub,
@@ -125,7 +122,6 @@ public class ForumImgController {
 		}
 		
 		product.setText_image(imageData);
-		product.setText_image_name(description);
 		
 		product.setText_time(createDate);
 		product.setTitle(title);
