@@ -37,6 +37,7 @@ public class ForumImgController {
 	@Autowired
 	ForumJpaService forumJpaService;
 	
+	//更新
 	@RequestMapping(path="/updatefile", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> upldateproduct (	@RequestParam("textId") Long textId,
 															@RequestParam("title") String title, 
@@ -79,6 +80,7 @@ public class ForumImgController {
 			}
 		}
 	
+	
 	@GetMapping("/product/display/{textId}")  // 用來匯出資料庫的圖片
 	@ResponseBody
 	public void showImage(@PathVariable("textId") Long textId, 
@@ -92,6 +94,7 @@ public class ForumImgController {
 		response.getOutputStream().close();
 	}
 	
+	//新增頁面
 	@RequestMapping(path="/upload", method = {RequestMethod.POST,RequestMethod.GET})  // 首頁位置
 	public String uploadindex(Model m) {
 		
@@ -99,6 +102,7 @@ public class ForumImgController {
 
 	}
 	
+	//新增
 	@RequestMapping(path="/uploadfile", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> uploadproduct (final @RequestParam("image") MultipartFile file,
 																@RequestParam("title") String title, 

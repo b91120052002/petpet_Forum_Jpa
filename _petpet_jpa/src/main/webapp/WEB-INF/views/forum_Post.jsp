@@ -189,6 +189,7 @@
 	<div align='center' >
 		<h3>發表新文章</h3>
 		<form id="form">
+			<div align='left'>
 			<div class="form-group">
 				<label for="text_sub">請選子版</label> 
 				<select	name="text_sub" class="form-control" id="text_sub">
@@ -213,24 +214,29 @@
 				<label for="title">文章標題</label> <input
 					type="text" name="title" required class="form-control"
 					id="title" placeholder="請輸入文章標題">
+				<p id="error_title" style="color:red;"></p>
+					
 			</div>
 			<!-- 文章內容 -->
 			<div class="form-group">
 				<label for="text">文章內容</label>
 				<textarea id="text" name="text" required class="form-control"
 					id="text" placeholder="それは、未来を取り戻す物語。"></textarea>
+				<p id="error_text" style="color:red;"></p>
+					
 			</div>
 			<!-- 圖片 -->
 			<!-- @請求參數增加:1.image -->
 			<div class="form-group">
-				<label class="col-form-label">Image</label> 
-				<input type="file" class="form-control" placeholder="" name="image" id="imgupload">
-				<p id="error_file"></p>
+				<label class="col-form-label">圖片</label> 
+				<input type="file" class="form-control" placeholder="" name="image" id="imgupload" >
+				<p id="error_file" style="color:red;"></p>
 			</div>
 			<div class="form-group">
-				<label class="col-form-label">Image預覽</label> 
+				<label class="col-form-label">圖片預覽</label> 
 				<img id="demo" />
-				<p id="error_file"></p>
+				<p id="error_file" style="color:red;"></p>
+			</div>
 			</div>
 			<input type="submit" id="submit" class="btn btn-success" value="發文" /> <br>
 			<div id="success" class="text-center" style="color: green;"></div>
@@ -256,7 +262,6 @@
 
 // AJAX+錯誤回報
 $(document).ready(function() {
-    $('#loader').hide();
 
     $("#submit").on("click", function() {
     	$("#submit").prop("disabled", true);//上傳一次
@@ -266,22 +271,16 @@ $(document).ready(function() {
     	var text_type   = $("#text_type").val(); 
     	var file        = $("#imageupload").val(); 
         var form = $("#form").serialize();
-        console.log(form);
         // 利用JS的FormData格式來序列化(serialize) input 當中的 name 與 file ，才可以用AJAX方式進行檔案上傳
     	var data = new FormData($("#form")[0]);
-        console.log($("#form")[0]);
-    	//alert(data);
-        $('#loader').show();
         //如果表格內input的四個如果有空的話，顯示下面的CSS格式，把Submit鎖住，Loader藏起來，邊框改為紅色，Error messgae跳出字串
         if (title === "" || text === "") {
         	$("#submit").prop("disabled", false);
-            $('#loader').hide();
-            $("#name").css("border-color", "red");
-            $("#image").css("border-color", "red");
-            $("#price").css("border-color", "red");
-            $("#error_name").html("Please fill the required field.");
-            $("#error_file").html("Please fill the required field.");
-            $("#error_price").html("Please fill the required field.");
+            $("#title").css("border-color", "red");
+            $("#text").css("border-color", "red");
+            $("#imgupload").css("border-color", "red");
+            $("#error_title").html("必填欄位");
+            $("#error_text").html("必填欄位");
         } else {
             
             //jquery 發送ajax的語法https://ithelp.ithome.com.tw/articles/10226692
@@ -296,7 +295,6 @@ $(document).ready(function() {
                         success: function(data, statusText, xhr) {  //	請求成功時執行函式,  前面新增的FormData物件放在第一個 ，第二個我不知道，第三個XMLHttpRequest(XHR) 物件發送
                         console.log(xhr.status);
                         if(xhr.status == "200") {
-                        	$('#loader').hide(); 
                         	$("#form")[0].reset();
                         	$('#success').css('display','block');
                             $("#error").text("");
@@ -306,7 +304,6 @@ $(document).ready(function() {
                          }	   
                         },
                         error: function(e) {
-                        	$('#loader').hide();
                         	$('#error').css('display','block');
                             $("#error").html("Oops! something went wrong.");
                             $('#error').delay(5000).fadeOut('slow');

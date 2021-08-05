@@ -207,11 +207,8 @@ function updateText(textId) {
 <form id="form">
 <input type="hidden" id="textId" name="textId" value="${fbs1.textId}" />
 
-  <div class="form-group">
-    <label for="title">文章標題</label>
-    <input type="text" name="title" required 
-    	class="form-control" id="title" value="${fbs1.title}">
-  </div>
+  
+  <div align='left'>
   <div class="form-group">
     <label for="text_sub">請選子版</label>
     <select name="text_sub"
@@ -234,6 +231,11 @@ function updateText(textId) {
       <option value="討論">討論</option>
     </select>
   </div>
+  <div class="form-group">
+    <label for="title">文章標題</label>
+    <input type="text" name="title" required 
+    	class="form-control" id="title" value="${fbs1.title}">
+  </div>
 
   <div class="form-group">
     <label for="text">文章內容</label>
@@ -248,11 +250,11 @@ function updateText(textId) {
   	<input type="file" class="form-control" placeholder="" name="image" id="imgupload" required="required">
   </div>
   <div class="col box">
-  	<label class="col-form-label fontsize">商品圖片預覽</label>
+  	<label class="col-form-label fontsize">圖片預覽</label>
     <img id="demo"/>
     <p id="error_file"></p>		
   </div>
- 
+  </div>
   <div id="message" class="text-center" style="color: green;"></div>
   <button type="submit" id="submit" class="btn btn-success" onclick="updateText(${fbs1.textId})" >更新</button>
   <input type="button" value="刪除" name="delete" class="btn btn-danger" onclick="deleteText(${fbs1.textId})">

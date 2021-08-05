@@ -102,5 +102,12 @@ public class ForumJpaController {
 		m.addAttribute("fbs1", fbs);
 		return "forum_Main";
 	}
+	
+	@GetMapping("/BS")
+	public String bSgetTexts(Model m) {
+		List<ForumJpaBean> fbs = forumJpaService.findAll();
+		m.addAttribute("fbs1", fbs);
+		return "Event";
+	}
 
 }
