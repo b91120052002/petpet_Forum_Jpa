@@ -185,17 +185,17 @@
 	<!----------------------------------------------NEW!!Strat!!-------------------------------------------->
 	
 <script>
-function deleteText(textId) {
+function deleteText(text_id) {
     if (confirm("これが我が『キング・クリムゾン』の能力！")) {
-    	let  web="delete?textId="+textId;
+    	let  web="delete?text_id="+text_id;
     	window.location.href=web;
     	
     }
     return false;
 }
-function updateText(textId) {
+function updateText(text_id) {
     if (confirm("コレが………『レクイエム』……………ダ！！")) {
-    	    	
+    	
     }
     return false;
 }
@@ -205,7 +205,7 @@ function updateText(textId) {
 <div align='center'>
 <h3>選取文章</h3>
 <form id="form">
-<input type="hidden" id="textId" name="textId" value="${fbs1.textId}" />
+<input type="hidden" id="text_id" name="text_id" value="${fbs1.text_id}" />
 
   
   <div align='left'>
@@ -244,7 +244,7 @@ function updateText(textId) {
   </div>
   <!-- 圖片 -->
   <div class="col box">
-  	<img class="picview" src="${pageContext.request.contextPath}/product/display/${fbs1.textId}" class="image" alt=""> 
+  	<img class="picview" src="${pageContext.request.contextPath}/product/display/${fbs1.text_id}" class="image" alt=""> 
   </div>
   <div class="col box">
   	<input type="file" class="form-control" placeholder="" name="image" id="imgupload" required="required">
@@ -256,8 +256,8 @@ function updateText(textId) {
   </div>
   </div>
   <div id="message" class="text-center" style="color: green;"></div>
-  <button type="submit" id="submit" class="btn btn-success" onclick="updateText(${fbs1.textId})" >更新</button>
-  <input type="button" value="刪除" name="delete" class="btn btn-danger" onclick="deleteText(${fbs1.textId})">
+  <button type="button" id="submit" class="btn btn-success" onclick="updateText(${fbs1.text_id})" >更新</button>
+  <input type="button" value="刪除" name="delete" class="btn btn-danger" onclick="deleteText(${fbs1.text_id})">
   <br>
   <a href="<c:url value='/' />">回首頁</a>
 </form>

@@ -212,8 +212,8 @@
 <tbody>
 <tr>
 <th scope="row">${fb.text_sub}/${fb.text_type}</th>
-<td><a href="<c:url value='/text' />?textId=${fb.textId}"><img class="picview" src="${pageContext.request.contextPath}/product/display/${fb.textId}" /></a></td>
-<td><div><a href="<c:url value='/text' />?textId=${fb.textId}"> ${fb.title}</a></div><p>${fb.text}</p></td>
+<td><a href="<c:url value='/text' />?text_id=${text_id}"><img class="picview" src="${pageContext.request.contextPath}/product/display/${fb.text_id}" /></a></td>
+<td><div><a href="<c:url value='/text' />?text_id=${fb.text_id}"> ${fb.title}</a></div><p>${fb.text}</p></td>
 <td><fmt:formatDate pattern="MM/dd HH:mm" value="${fb.text_time}" /></td>
 </tr>
 </tbody>     

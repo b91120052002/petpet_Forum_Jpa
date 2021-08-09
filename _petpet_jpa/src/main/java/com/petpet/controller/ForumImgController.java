@@ -5,13 +5,11 @@ import java.util.Date;
 import java.util.Optional;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -25,7 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.petpet.model.ForumJpaBean;
+import com.petpet.model.Member;
 import com.petpet.service.ForumJpaService;
+import com.petpet.service.MemberService;
 
 @Controller
 public class ForumImgController {
@@ -37,9 +37,12 @@ public class ForumImgController {
 	@Autowired
 	ForumJpaService forumJpaService;
 	
+	@Autowired
+	MemberService memberService;
+	
 	//更新
 	@RequestMapping(path="/updatefile", method = RequestMethod.POST)
-	public @ResponseBody ResponseEntity<?> upldateproduct (	@RequestParam("textId") Long textId,
+	public @ResponseBody ResponseEntity<?> upldateproduct (	@RequestParam("text_id") Long text_id,
 															@RequestParam("title") String title, 
 															@RequestParam("text") String text,
 															@RequestParam("text_sub") String text_sub,
@@ -51,7 +54,7 @@ public class ForumImgController {
 
 			Date createDate = new Date();  //變成是現在的修改時間匯入
 
-			ForumJpaBean product = forumJpaService.getTextById(textId).orElse(null);
+			ForumJpaBean product = forumJpaService.getTextById(text_id).orElse(null);
 				
 			byte[] imageData1= product.getText_image();
 			
@@ -81,14 +84,14 @@ public class ForumImgController {
 		}
 	
 	
-	@GetMapping("/product/display/{textId}")  // 用來匯出資料庫的圖片
+	@GetMapping("/product/display/{text_id}")  // 用來匯出資料庫的圖片
 	@ResponseBody
-	public void showImage(@PathVariable("textId") Long textId, 
+	public void showImage(@PathVariable("text_id") Long text_id, 
 							HttpServletResponse response, 
 							Optional<ForumJpaBean> product
 							) throws ServletException, IOException {
-		log.info("textId :: " + textId);
-		product = forumJpaService.getTextById(textId);
+		log.info("text_id :: " + text_id);
+		product = forumJpaService.getTextById(text_id);
 		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
 		response.getOutputStream().write(product.get().getText_image());
 		response.getOutputStream().close();
@@ -126,6 +129,9 @@ public class ForumImgController {
 		}
 		
 		product.setText_image(imageData);
+		
+		Member member = memberService.findById((long) 1);
+		product.setMember(member);
 		
 		product.setText_time(createDate);
 		product.setTitle(title);

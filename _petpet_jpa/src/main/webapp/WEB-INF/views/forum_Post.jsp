@@ -191,6 +191,7 @@
 		<form id="form">
 			<div align='left'>
 			<div class="form-group">
+
 				<label for="text_sub">請選子版</label> 
 				<select	name="text_sub" class="form-control" id="text_sub">
 					<option value="貓咪">貓咪</option>
