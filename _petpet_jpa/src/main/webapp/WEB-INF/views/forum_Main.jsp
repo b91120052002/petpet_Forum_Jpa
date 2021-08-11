@@ -200,11 +200,11 @@
 <table id="contentTable" class="table table-striped table-condensed ">
 <thead>
  
-<tr>
-<th scope="col" style="width:80px;"><a style="color:red" href="<c:url value='/post_Page'  />"><input type="submit" id="submit" class="btn btn-success" value="發文" /> <br></a></th>
+<tr align='right'>
+<th scope="col" style="width:80px;"></th>
 <th scope="col" style="width:80px;"></th>
 <th scope="col" style="width:160px;"></th>
-<th scope="col" style="width:80px;"></th>
+<th scope="col" style="width:80px;"><a style="color:red" href="<c:url value='/post_Page'  />"><input type="submit" id="submit" class="btn btn-success" value="發文" /></a></th>
 </tr>
 
 </thead>
@@ -214,7 +214,13 @@
 <th scope="row">${fb.text_sub}/${fb.text_type}</th>
 <td><a href="<c:url value='/text' />?text_id=${text_id}"><img class="picview" src="${pageContext.request.contextPath}/product/display/${fb.text_id}" /></a></td>
 <td><div><a href="<c:url value='/text' />?text_id=${fb.text_id}"> ${fb.title}</a></div><p>${fb.text}</p></td>
-<td><fmt:formatDate pattern="MM/dd HH:mm" value="${fb.text_time}" /></td>
+<td><fmt:formatDate pattern="MM/dd HH:mm" value="${fb.text_time}" /><br>
+							<c:set var="eventmember" value="${fb.member}" />
+                            <c:if test="${not empty eventmember}">
+                            <c:out value="${eventmember.memberid}" />
+                                
+                               <!-- 利用C:set撈出EL資料，迴圈撈出活動參加人員，Test檢驗是否有參加會員 -->
+                            </c:if> </td>
 </tr>
 </tbody>     
 </c:forEach>

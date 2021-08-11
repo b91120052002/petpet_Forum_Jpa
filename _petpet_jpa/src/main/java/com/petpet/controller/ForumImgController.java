@@ -130,7 +130,7 @@ public class ForumImgController {
 		
 		product.setText_image(imageData);
 		
-		Member member = memberService.findById((long) 1);
+		Member member = memberService.findById((long) Math.floor(Math.random() * 3) + 1);
 		product.setMember(member);
 		
 		product.setText_time(createDate);

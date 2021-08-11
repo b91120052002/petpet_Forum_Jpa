@@ -61,6 +61,11 @@ public class Member {
 		super();
 	}
 
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", memberid=" + memberid + ", member=" + member + "]";
+	}
+	
 	
 	
 }

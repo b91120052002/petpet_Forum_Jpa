@@ -200,10 +200,10 @@ function updateText(text_id) {
     return false;
 }
 </script>
-
+<h3 align='center'><a href="<c:url value='/' />">回首頁</a></h3>
 <fieldset>
 <div align='center'>
-<h3>選取文章</h3>
+
 <form id="form">
 <input type="hidden" id="text_id" name="text_id" value="${fbs1.text_id}" />
 
@@ -240,7 +240,7 @@ function updateText(text_id) {
   <div class="form-group">
     <label for="text">文章內容</label>
     <textarea id="text" name="text" required
-    	 class="form-control" id="text" ></textarea>
+    	 class="form-control" ></textarea>
   </div>
   <!-- 圖片 -->
   <div class="col box">
@@ -259,11 +259,20 @@ function updateText(text_id) {
   <button type="button" id="submit" class="btn btn-success" onclick="updateText(${fbs1.text_id})" >更新</button>
   <input type="button" value="刪除" name="delete" class="btn btn-danger" onclick="deleteText(${fbs1.text_id})">
   <br>
-  <a href="<c:url value='/' />">回首頁</a>
+  
 </form>
 </div>
 </fieldset>
 
+<fieldset>
+<div align='left'>
+<form id="replies">
+	<label for="reply_text">回覆內容</label>
+    <textarea id="reply_text" name="reply_text" required class="form-control" ></textarea>
+    <input type="submit" value="送出回覆" />
+</form>
+</div>
+</fieldset>
 <script>
 
   $("#text").val("${fbs1.text}");
