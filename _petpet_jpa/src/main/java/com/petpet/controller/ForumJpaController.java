@@ -1,18 +1,13 @@
 package com.petpet.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.petpet.model.ForumJpaBean;
-import com.petpet.model.Member;
 import com.petpet.service.ForumJpaService;
 import com.petpet.service.MemberService;
 
@@ -43,7 +38,8 @@ public class ForumJpaController {
 		m.addAttribute("fbs1", fbs1);
 		return "forumText";
 	}
-
+	
+	//發文頁面
 	@GetMapping("/post_Page")
 	public String forum(Model model) {
 		return "forum_Post";

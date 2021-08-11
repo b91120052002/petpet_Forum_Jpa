@@ -25,6 +25,9 @@ public class Member {
 	
 	@OneToMany(mappedBy = "member", targetEntity = ForumJpaBean.class)
 	private Set<ForumJpaBean> member = new HashSet<ForumJpaBean>();
+	
+	@OneToMany(mappedBy = "member", targetEntity = Replies.class)
+	private Set<Replies> memberR = new HashSet<Replies>();
 
 	public Long getId() {
 		return id;
@@ -50,21 +53,26 @@ public class Member {
 		this.member = member;
 	}
 
-	public Member(Long id, String memberid, Set<ForumJpaBean> member) {
+	public Set<Replies> getMemberR() {
+		return memberR;
+	}
+
+	public void setMemberR(Set<Replies> memberR) {
+		this.memberR = memberR;
+	}
+
+	public Member(Long id, String memberid, Set<ForumJpaBean> member, Set<Replies> memberR) {
 		super();
 		this.id = id;
 		this.memberid = memberid;
 		this.member = member;
+		this.memberR = memberR;
 	}
 
 	public Member() {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return "Member [id=" + id + ", memberid=" + memberid + ", member=" + member + "]";
-	}
 	
 	
 	
