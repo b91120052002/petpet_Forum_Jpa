@@ -274,20 +274,19 @@ function updateText(text_id) {
    <table>
    
    
-   <c:set var="eventmember" value="${fbs1.fbR}" />
-	<c:if test="${not empty eventmember}">
-	<c:forEach items="${eventmember}" var="eventmember" varStatus="s">
-	<c:set var="eventmembername" value="${eventmember}" />
+   <c:set var="replymember" value="${fbs1.fbR}" />
+	<c:if test="${not empty replymember}">
+	<c:forEach items="${replymember}" var="replymember" varStatus="s">
+	<c:set var="replymembername" value="${replymember}" />
 	<tr>
 	<td>
-	<c:set var="rmember" value="${member}" />
-	${rmember.memberid}
+	${replymembername.member.memberid}
 	</td>
    	<td>
-   	${eventmembername.reply_text}
+   	${replymembername.reply_text}
    	</td>
    	<td>
-	<fmt:formatDate pattern="MM/dd HH:mm" value="${eventmembername.reply_date}" />
+	<fmt:formatDate pattern="MM/dd HH:mm" value="${replymembername.reply_date}" />
 	</td>
 	</tr>
 	</c:forEach>
@@ -353,7 +352,7 @@ function updateText(text_id) {
                         success: function(data, statusText, xhr) {  //	請求成功時執行函式,  前面新增的FormData物件放在第一個 ，第二個我不知道，第三個XMLHttpRequest(XHR) 物件發送
                         console.log(xhr.status);
                         if(xhr.status == "200") {
-                            setTimeout( "self.location.reload(); ",10000);  // Reload或轉到其他頁面
+                            setTimeout( "self.location.reload(); ",1000);  // Reload或轉到其他頁面
 							$("#message").html("修改成功");
                          }	   
                         },
@@ -386,7 +385,7 @@ function updateText(text_id) {
 	                        success: function(data, statusText, xhr) {  //	請求成功時執行函式,  前面新增的FormData物件放在第一個 ，第二個我不知道，第三個XMLHttpRequest(XHR) 物件發送
 	                        console.log(xhr.status);
 	                        if(xhr.status == "200") {
-	                            setTimeout( "self.location.reload(); ",10000);  // Reload或轉到其他頁面
+	                            setTimeout( "self.location.reload(); ",1000);  // Reload或轉到其他頁面
 								$("#message").html("修改成功");
 	                         }	   
 	                        },
