@@ -271,7 +271,17 @@ function updateText(text_id) {
    <div id="message" class="text-center" style="color: green;"></div>
    <!-- 回覆 -->
    <div>
-   <fmt:formatDate pattern="MM/dd HH:mm" value="${fbs1.text_time}" />
+   <c:set var="eventmember" value="${fbs1.fbR}" />
+	<c:if test="${not empty eventmember}">
+	<c:forEach items="${eventmember}" var="eventmember" varStatus="s">
+
+	<c:set var="eventmembername" value="${eventmember}" />
+	${eventmembername.reply_text}
+	</c:forEach>
+<!-- 利用C:set撈出EL資料，迴圈撈出活動參加人員，Test檢驗是否有參加會員 -->
+                            </c:if> 
+   
+   <fmt:formatDate pattern="MM/dd HH:mm" value="${rps.reply_date}" />
    
    </div>
  

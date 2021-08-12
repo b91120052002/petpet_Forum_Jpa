@@ -7,9 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.petpet.model.ForumJpaBean;
+import com.petpet.model.Replies;
 import com.petpet.service.ForumJpaService;
 import com.petpet.service.MemberService;
+import com.petpet.service.RepliesService;
 
 @Controller
 public class ForumJpaController {
@@ -19,6 +22,9 @@ public class ForumJpaController {
 	
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	RepliesService repliesService;
 
 	@GetMapping("/delete")
 	public String delete(@RequestParam Long text_id, Model m) {
