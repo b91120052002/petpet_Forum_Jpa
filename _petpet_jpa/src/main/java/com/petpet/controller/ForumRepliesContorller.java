@@ -59,7 +59,6 @@ public class ForumRepliesContorller {
 		
 		repliesService.save(rp);
 		
-		System.out.println(rp);
 		
 		log.info("HttpStatus===" + new ResponseEntity<>(HttpStatus.OK));
 		return new ResponseEntity<>("Product Saved With File - ", HttpStatus.OK);
