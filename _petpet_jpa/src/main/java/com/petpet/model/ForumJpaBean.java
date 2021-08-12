@@ -1,6 +1,8 @@
 package com.petpet.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -40,6 +43,9 @@ public class ForumJpaBean {
 
 	@ManyToOne
 	private Member member;
+	
+	@OneToMany(mappedBy = "forumJpaBean", targetEntity = Replies.class)
+	private Set<Replies> fbR = new HashSet<Replies>();
 
 	public Long getText_id() {
 		return text_id;
@@ -113,8 +119,16 @@ public class ForumJpaBean {
 		this.member = member;
 	}
 
+	public Set<Replies> getFbR() {
+		return fbR;
+	}
+
+	public void setFbR(Set<Replies> fbR) {
+		this.fbR = fbR;
+	}
+
 	public ForumJpaBean(Long text_id, String title, String text, Date text_time, String text_sub, String text_type,
-			byte[] text_image, String text_image_name, Member member) {
+			byte[] text_image, String text_image_name, Member member, Set<Replies> fbR) {
 		super();
 		this.text_id = text_id;
 		this.title = title;
@@ -125,12 +139,14 @@ public class ForumJpaBean {
 		this.text_image = text_image;
 		this.text_image_name = text_image_name;
 		this.member = member;
+		this.fbR = fbR;
 	}
 
 	public ForumJpaBean() {
 		super();
 	}
 
+	
 
 	
 }

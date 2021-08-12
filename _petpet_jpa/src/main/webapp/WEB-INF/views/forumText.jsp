@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -206,11 +208,14 @@ function updateText(text_id) {
 
 <form id="form">
 <input type="hidden" id="text_id" name="text_id" value="${fbs1.text_id}" />
-
+<div align="right">
+ <button type="button" id="submit" class="btn btn-success" onclick="updateText(${fbs1.text_id})" >更新</button>
+  <input type="button" value="刪除" name="delete" class="btn btn-danger" onclick="deleteText(${fbs1.text_id})">
+</div>
   
   <div align='left'>
   <div class="form-group">
-    <label for="text_sub">請選子版</label>
+    <label for="text_sub">子版</label>
     <select name="text_sub"
     	class="form-control" id="text_sub">
       <option value="${fbs1.text_sub}" selected >${fbs1.text_sub}</option>	
@@ -221,7 +226,7 @@ function updateText(text_id) {
     </select>
   </div>
   <div class="form-group">
-    <label for="text_type">請選類型</label>
+    <label for="text_type">類型</label>
     <select name="text_type"
     	class="form-control" id="text_type">
       <option value="${fbs1.text_type}" selected >${fbs1.text_type}</option>	
@@ -255,12 +260,21 @@ function updateText(text_id) {
     <p id="error_file"></p>		
   </div>
   </div>
-  <div id="message" class="text-center" style="color: green;"></div>
-  <button type="button" id="submit" class="btn btn-success" onclick="updateText(${fbs1.text_id})" >更新</button>
-  <input type="button" value="刪除" name="delete" class="btn btn-danger" onclick="deleteText(${fbs1.text_id})">
-  <br>
-  
-</form>
+  </form>
+  <div align="right">
+	<c:set var="eventmember" value="${fbs1.member}" />
+	<c:if test="${not empty eventmember}">
+	<c:out value="${eventmember.memberid}" /><br>
+	</c:if>
+	<fmt:formatDate pattern="MM/dd HH:mm" value="${fbs1.text_time}" />
+  </div>
+   <div id="message" class="text-center" style="color: green;"></div>
+   <!-- 回覆 -->
+   <div>
+   <fmt:formatDate pattern="MM/dd HH:mm" value="${fbs1.text_time}" />
+   
+   </div>
+ 
 </div>
 </fieldset>
 
@@ -268,7 +282,7 @@ function updateText(text_id) {
 <div align='left'>
 <form id="repliesf">
 <input type="hidden" id="text_id" name="text_id" value="${fbs1.text_id}" />
-	<label for="reply_text">回覆內容</label>
+	<label for="reply_text">加入討論?</label>
     <textarea id="reply_text" name="reply_text" required class="form-control" ></textarea>
     <button type="button" id="replies" class="btn btn-success" >送出回覆</button>
 </form>
