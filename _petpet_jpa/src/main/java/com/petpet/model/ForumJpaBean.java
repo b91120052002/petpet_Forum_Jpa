@@ -1,7 +1,8 @@
 package com.petpet.model;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -45,7 +47,7 @@ public class ForumJpaBean {
 	private Member member;
 	
 	@OneToMany(mappedBy = "forumJpaBean", targetEntity = Replies.class)
-	private Set<Replies> fbR = new HashSet<Replies>();
+	private List<Replies> fbR = new ArrayList<Replies>();
 
 	public Long getText_id() {
 		return text_id;
@@ -119,16 +121,16 @@ public class ForumJpaBean {
 		this.member = member;
 	}
 
-	public Set<Replies> getFbR() {
+	public List<Replies> getFbR() {
 		return fbR;
 	}
 
-	public void setFbR(Set<Replies> fbR) {
+	public void setFbR(List<Replies> fbR) {
 		this.fbR = fbR;
 	}
 
 	public ForumJpaBean(Long text_id, String title, String text, Date text_time, String text_sub, String text_type,
-			byte[] text_image, String text_image_name, Member member, Set<Replies> fbR) {
+			byte[] text_image, String text_image_name, Member member, List<Replies> fbR) {
 		super();
 		this.text_id = text_id;
 		this.title = title;

@@ -15,9 +15,9 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="0">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 <title>Shopping Website</title>
 <!--stylesheet-->
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -271,18 +271,32 @@ function updateText(text_id) {
    <div id="message" class="text-center" style="color: green;"></div>
    <!-- 回覆 -->
    <div>
+   <table>
+   
+   
    <c:set var="eventmember" value="${fbs1.fbR}" />
 	<c:if test="${not empty eventmember}">
 	<c:forEach items="${eventmember}" var="eventmember" varStatus="s">
-
 	<c:set var="eventmembername" value="${eventmember}" />
-	${eventmembername.reply_text}
+	<tr>
+	<td>
+	<c:set var="rmember" value="${member}" />
+	${rmember.memberid}
+	</td>
+   	<td>
+   	${eventmembername.reply_text}
+   	</td>
+   	<td>
+	<fmt:formatDate pattern="MM/dd HH:mm" value="${eventmembername.reply_date}" />
+	</td>
+	</tr>
 	</c:forEach>
+	
 <!-- 利用C:set撈出EL資料，迴圈撈出活動參加人員，Test檢驗是否有參加會員 -->
                             </c:if> 
    
    <fmt:formatDate pattern="MM/dd HH:mm" value="${rps.reply_date}" />
-   
+   </table>
    </div>
  
 </div>

@@ -3,7 +3,6 @@ package com.petpet.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.petpet.model.Member;
 import com.petpet.model.Replies;
 
 public interface RepliesService {
