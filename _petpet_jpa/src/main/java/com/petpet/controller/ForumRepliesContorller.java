@@ -35,6 +35,14 @@ public class ForumRepliesContorller {
 	@Autowired
 	RepliesService repliesService;
 	
+	@RequestMapping(path="/deleteR", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<?>  deleteReply(@RequestParam Long reply_id) {
+
+		repliesService.delete(reply_id);
+		
+		return new ResponseEntity<>("刪除成功", HttpStatus.OK);
+	}
+	
 	
 	@RequestMapping(path="/replies", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> uploadproduct (@RequestParam("reply_text") String reply_text, 

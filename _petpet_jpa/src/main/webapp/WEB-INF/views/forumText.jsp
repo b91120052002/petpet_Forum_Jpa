@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 <!-- 新增結束 -->
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -201,6 +202,22 @@ function updateText(text_id) {
     }
     return false;
 }
+
+//function deleteReply(reply_id) {
+//    if (confirm("これが我が『キング・クリムゾン』の能力！")) {
+//    	let  web="deleteR?reply_id="+reply_id;
+//    	window.location.href=web;
+    	
+//    }
+//    return false;
+//}
+
+function updateReply(reply_id) {
+    if (confirm("コレが………『レクイエム』……………ダ！！")) {
+    	
+    }
+    return false;
+}
 </script>
 <h3 align='center'><a href="<c:url value='/' />">回首頁</a></h3>
 <fieldset>
@@ -271,6 +288,8 @@ function updateText(text_id) {
    <div id="message" class="text-center" style="color: green;"></div>
    <!-- 回覆 -->
    <div>
+   <form id="repliesform">
+ 
    <table>
    
    
@@ -278,24 +297,37 @@ function updateText(text_id) {
 	<c:if test="${not empty replymember}">
 	<c:forEach items="${replymember}" var="replymember" varStatus="s">
 	<c:set var="replymembername" value="${replymember}" />
+	<input type="hidden" id="reply_id" name="reply_id" value="${replymembername.reply_id}" />
 	<tr>
+	  
 	<td>
-	${replymembername.member.memberid}
+		${replymembername.member.memberid}
 	</td>
    	<td>
-   	${replymembername.reply_text}
+   		${replymembername.reply_text}
    	</td>
    	<td>
-	<fmt:formatDate pattern="MM/dd HH:mm" value="${replymembername.reply_date}" />
+		<fmt:formatDate pattern="MM/dd HH:mm" value="${replymembername.reply_date}" />
+	</td>
+	<td>
+		<!--
+		 <button type="button" id="replysubmit" class="btn btn-success" onclick="updateReply(${replymembername.reply_id})" >更新</button>
+		 -->
+		<button type="button" id="replydelete" class="btn btn-danger" >刪除</button>
+  		
 	</td>
 	</tr>
+	
 	</c:forEach>
+	
 	
 <!-- 利用C:set撈出EL資料，迴圈撈出活動參加人員，Test檢驗是否有參加會員 -->
                             </c:if> 
    
    <fmt:formatDate pattern="MM/dd HH:mm" value="${rps.reply_date}" />
+ 
    </table>
+   </form>
    </div>
  
 </div>
@@ -386,7 +418,7 @@ function updateText(text_id) {
 	                        console.log(xhr.status);
 	                        if(xhr.status == "200") {
 	                            setTimeout( "self.location.reload(); ",1000);  // Reload或轉到其他頁面
-								$("#message").html("修改成功");
+								$("#message").html("訊息咧");
 	                         }	   
 	                        },
 	                        error: function(e) {
@@ -399,7 +431,40 @@ function updateText(text_id) {
 	            });
 	        });
 
-  		
+  //刪除
+  $(document).ready(function() {
+	    $("#replydelete").on("click", function() {
+	    	$("#replydelete").prop("disabled", true);//上傳一次
+	    	var reply_id       		= $("#reply_id").val(); 
+	        var repliesform         = $("#repliesform").serialize();
+	    	var data = new FormData($("#repliesform")[0]);
+
+	                    $.ajax({
+	                        type: 'POST',
+	                        enctype: 'multipart/form-data',
+	                        data: data,
+	                        //塞入controller
+	                        url: "/petpet/forum/deleteR", 
+	                        processData: false,  //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
+	                        contentType: false,  //默认值为contentType = "application/x-www-form-urlencoded".在默认情况下，内容编码类型满足大多数情况。但要上傳檔案，要設為False
+	                        cache: false,
+	                        success: function(data, statusText, xhr) {  //	請求成功時執行函式,  前面新增的FormData物件放在第一個 ，第二個我不知道，第三個XMLHttpRequest(XHR) 物件發送
+	                        console.log(xhr.status);
+	                        if(xhr.status == "200") {
+	                            setTimeout( "self.location.reload(); ",1000);  // Reload或轉到其他頁面
+								$("#message").html("刪除咧");
+	                         }	   
+	                        },
+	                        error: function(e) {
+								console.log('錯誤');
+								
+	                            // location.reload();
+	                        }
+	                    });
+	  
+	            });
+	        });
+
 </script>
 
 
