@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,7 +47,7 @@ public class ForumJpaBean {
 	@ManyToOne
 	private Member member;
 	
-	@OneToMany(mappedBy = "forumJpaBean", targetEntity = Replies.class)
+	@OneToMany(mappedBy = "forumJpaBean", targetEntity = Replies.class, cascade = CascadeType.ALL)
 	private List<Replies> fbR = new ArrayList<Replies>();
 
 	public Long getText_id() {

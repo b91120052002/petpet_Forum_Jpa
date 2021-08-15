@@ -51,6 +51,12 @@
     	max-height:120px;
 		}
 	</style>
+	<style type="text/css">
+		#contentTable{
+			table-layout:fixed; /* bootstrap-table設定colmuns中某列的寬度無效時，需要給整個表設定css屬性 */
+			word-break:break-all; word-wrap:break-all; /* 自動換行 */
+		}
+	</style>
 	<style>
 	 fieldset{
             width: 50%;
@@ -290,32 +296,31 @@ function updateReply(reply_id) {
    <div>
    <form id="repliesform">
  
-   <table>
+   <table id="contentTable" class="table table-striped table-condensed ">
    
    
    <c:set var="replymember" value="${fbs1.fbR}" />
 	<c:if test="${not empty replymember}">
 	<c:forEach items="${replymember}" var="replymember" varStatus="s">
 	<c:set var="replymembername" value="${replymember}" />
-	<input type="hidden" id="reply_id" name="reply_id" value="${replymembername.reply_id}" />
 	<tr>
-	  
+	  	
 	<td>
 		${replymembername.member.memberid}
 	</td>
    	<td>
-   		${replymembername.reply_text}
+   		<input type="text" id="reply_text${s.count}" name="reply_text" value="${replymembername.reply_text}" />
+   		
+   		
    	</td>
    	<td>
 		<fmt:formatDate pattern="MM/dd HH:mm" value="${replymembername.reply_date}" />
 	</td>
 	<td>
-		<!--
-		 <button type="button" id="replysubmit" class="btn btn-success" onclick="updateReply(${replymembername.reply_id})" >更新</button>
-		 -->
-		<button type="button" id="replydelete" class="btn btn-danger" >刪除</button>
-  		
-	</td>
+		<input type="hidden" id="reply_id${s.count}" name="reply_id" value="${replymembername.reply_id}" />		
+		<button type="button" id="replyupdate_${s.count}" class="btn btn-success" >修改</button>	 
+		<button type="button" id="replydelete_${s.count}" class="btn btn-danger" >刪除</button>
+  	</td>
 	</tr>
 	
 	</c:forEach>
@@ -433,9 +438,43 @@ function updateReply(reply_id) {
 
   //刪除
   $(document).ready(function() {
-	    $("#replydelete").on("click", function() {
-	    	$("#replydelete").prop("disabled", true);//上傳一次
-	    	var reply_id       		= $("#reply_id").val(); 
+	    $(".btn-danger").on("click", function() {
+			var help = $(this).attr("id").split("_")[1];
+			console.log(help);
+			
+	    	$(this).prop("disabled", true);//上傳一次
+	    	var reply_id       		= $("#reply_id"+help).val(); 
+			console.log(reply_id);
+	    	
+	                    $.ajax({
+	                        type: 'GET',
+	                        //塞入controller
+	                        url: "/petpet/forum/deleteR/"+reply_id, 
+	                        
+	                        processData: false,  //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
+	                        contentType: false,  //默认值为contentType = "application/x-www-form-urlencoded".在默认情况下，内容编码类型满足大多数情况。但要上傳檔案，要設為False
+	                        cache: true,
+	                        success: function(data, statusText, xhr) {  //	請求成功時執行函式,  前面新增的FormData物件放在第一個 ，第二個我不知道，第三個XMLHttpRequest(XHR) 物件發送
+	                        console.log(xhr.status);
+	                        if(xhr.status == "200") {
+	                            setTimeout( "self.location.reload(); ",1000);  // Reload或轉到其他頁面
+								$("#message").html("刪除咧");
+	                         }	   
+	                        },
+	                        error: function(e) {
+								console.log('錯誤');
+								
+	                            // location.reload();
+	                        }
+	                    });
+	  
+	            });
+	        });
+	//修改
+  $(document).ready(function() {
+	    $("#replyupdate").on("click", function() {
+	    	$("#replyupdate").prop("disabled", true);//上傳一次
+	    	var reply_text       	= $("#reply_text").val(); 
 	        var repliesform         = $("#repliesform").serialize();
 	    	var data = new FormData($("#repliesform")[0]);
 
@@ -444,7 +483,7 @@ function updateReply(reply_id) {
 	                        enctype: 'multipart/form-data',
 	                        data: data,
 	                        //塞入controller
-	                        url: "/petpet/forum/deleteR", 
+	                        url: "/petpet/forum/updateR", 
 	                        processData: false,  //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
 	                        contentType: false,  //默认值为contentType = "application/x-www-form-urlencoded".在默认情况下，内容编码类型满足大多数情况。但要上傳檔案，要設為False
 	                        cache: false,
