@@ -53,10 +53,10 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-4">
-                            <h2><b>線下活動管理</b></h2>
+                            <h2><b>論壇管理</b></h2>
                         </div>
                         <div class="col-sm-5">
-						    <a href="${pageContext.request.contextPath}/upload"  class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>新增文章</span></a>
+						    <a href="${pageContext.request.contextPath}/BackStageInsert"  class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>新增文章</span></a>
 						    <a href="#deleteEmployeeModal" class="btn btn-danger"><i class="material-icons">&#xE15C;</i> <span>刪除文章</span></a>	
                             <!-- 
                             <a href="${pageContext.request.contextPath}/EventAdd" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>成員新增活動</span></a>
@@ -121,7 +121,7 @@
 						  
 						      
                             <td>
-                                <a href="<c:url value='/text' />?text_id=${fbs.text_id}">  ${fbs.title} </a>
+                                <a href="<c:url value='/BackStageFindById' />?text_id=${fbs.text_id}">  ${fbs.title} </a>
                             </td>
                             <!-- 
                                                                             利用Choose 來換標籤
@@ -143,8 +143,8 @@
                             <td><img class="picview" src="${pageContext.request.contextPath}/product/display/${fbs.text_id}" /></td>
                             <td><fmt:formatDate pattern="yyyy-MM-dd aa HH:mm" value='${fbs.text_time}'/></td>
                             <!-- <td><c:out value="${event.eventClick}"/></td> -->
-                            <td><a href='<c:url value='/text' />?text_id=${fbs.text_id}' class="edit" id="update" value = "修改"> <i class="material-icons" data-toggle="tooltip" title="修改">&#xE254;</i>   
-                                <a href="/petpet/forum/deletebs?text_id=${fbs.text_id}" class="delete" id="delete" value="刪除"><i class="material-icons" data-toggle="tooltip" title="刪除">&#xE872;</i></a>
+                            <td><a href='<c:url value='/BackStageFindById' />?text_id=${fbs.text_id}' class="edit" id="update" > <i class="material-icons" data-toggle="tooltip" title="修改">&#xE254;</i></a>   
+                                <a href="/petpet/forum/deletebs?text_id=${fbs.text_id}" class="delete" id="delete" ><i class="material-icons" data-toggle="tooltip" title="刪除">&#xE872;</i></a>
                             	
                             </td>
                            
@@ -161,9 +161,6 @@
         </div>
     </div>
 </div>
-
-</body>
- 
 <script>
 //  右側的刪除標籤確認AJAX
  $(document).ready(function() {
@@ -218,19 +215,11 @@
     
 })
 
-$(document).ready(function() {
-    $("#update").on("click", function() {
-        if (confirm("黑蚊子多啊")) {
-             let  web="/petpet/forum/updatefile?text_id=${fbs.text_id}"+text_id;
-             window.location.href=web;
-            //$.get( "/petpet/forum/deletebs?textId=${fbs.textId}", function() {
-                alert( "修改成功" );
-                location.reload() ;
-            ;
-        }
-        return false;
-    })
-    })
+
 </script>
+
+</body>
+ 
+
 
 </html>

@@ -34,21 +34,22 @@ public class ForumJpaController {
 		return "redirect:/";
 
 	}
-
-	@GetMapping("/text")
+	
+	//查詢單筆
+	@GetMapping("/FindById")
 	public String findBytext_id(@RequestParam("text_id") Long text_id, 
 								Model m
 								) {
 		// 要Service呼叫Dao
 		ForumJpaBean fbs1 = forumJpaService.findById(text_id);
 		m.addAttribute("fbs1", fbs1);
-		return "forumText";
+		return "forum_FindById";
 	}
 	
 	//發文頁面
-	@GetMapping("/post_Page")
+	@GetMapping("/Insert")
 	public String forum(Model model) {
-		return "forum_Post";
+		return "forum_Insert";
 	}
 
 	@GetMapping("/")

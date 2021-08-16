@@ -97,7 +97,7 @@ public class ForumImgController {
 		response.getOutputStream().close();
 	}
 	
-	//修改頁面
+	//新增頁面
 	@RequestMapping(path="/upload", method = {RequestMethod.POST,RequestMethod.GET})
 	public String uploadindex(Model m) {
 		

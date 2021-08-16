@@ -37,34 +37,7 @@ public class ForumRepliesContorller {
 	
 	@Autowired
 	RepliesService repliesService;
-	
-	//更新
-		@RequestMapping(path="/updateR", method = RequestMethod.POST)
-		public @ResponseBody ResponseEntity<?> updatereply (@RequestParam("reply_id") Long reply_id,
-																@RequestParam("reply_text") String reply_text, 
-																Model model 
-																){
-			try {
-
-				Date createDate = new Date();  //變成是現在的修改時間匯入
-
-				Replies rp = repliesService.getRepliesById(reply_id).orElse(null);
-									
-				rp.setReply_date(createDate);
-				rp.setReply_text(reply_text);
-	
-				repliesService.save(rp);
-				log.info("HttpStatus===" + new ResponseEntity<>(HttpStatus.OK));
-				return new ResponseEntity<>("Product Saved With File", HttpStatus.OK);
-			}	
-			
-			catch (Exception e) {
-				e.printStackTrace();
-				log.info("Exception: " + e);
-				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-				}
-			}
-	
+		
 	@RequestMapping(path="/deleteR/{id}", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?>  deleteReply(@PathVariable("id") Long reply_id) {
 		System.out.println(reply_id);
