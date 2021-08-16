@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	pageEncoding="UTF-8" import="java.util.* "%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <!-- 新增開始 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -343,8 +342,11 @@ function updateReply(reply_id) {
 <input type="hidden" id="replytext_id" name="text_id" value="${fbs1.text_id}" />
 	<label for="reply_text">加入討論?</label>
     <textarea id="reply_text" name="reply_text" required class="form-control" ></textarea>
-    <button type="button" id="replies" class="btn btn-success" >送出回覆</button>
+    
 </form>
+<div align="right">
+<button type="button" id="replies" class="btn btn-success" >送出回覆</button>
+</div>
 </div>
 </fieldset>
 <script>
