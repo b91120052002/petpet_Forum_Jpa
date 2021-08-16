@@ -60,7 +60,7 @@
 						<div class="row">
 							<div class="col-sm-4">
 								<h2>
-									<b>線下活動管理</b>
+									<b>論壇管理</b>
 								</h2>
 							</div>
 							<div class="col-sm-5">
@@ -105,7 +105,7 @@ function updateReply(reply_id) {
 }
 </script>
 					<h3 align='center'>
-						<a href="<c:url value='/BackStage' />">回前頁</a>
+						<a href="<c:url value='/BackStage' />">回首頁</a>
 					</h3>
 					<fieldset>
 						<div align='center'>

@@ -15,17 +15,18 @@ import com.petpet.service.MemberService;
 import com.petpet.service.RepliesService;
 
 @Controller
-public class ForumJpaController {
+public class ForumMainController {
 
 	@Autowired
 	ForumJpaService forumJpaService;
-	
+
 	@Autowired
 	MemberService memberService;
-	
+
 	@Autowired
 	RepliesService repliesService;
 
+	// 用文章id刪除後回到主頁
 	@GetMapping("/delete")
 	public String delete(@RequestParam Long text_id, Model m) {
 		forumJpaService.deleteById(text_id);
@@ -34,31 +35,27 @@ public class ForumJpaController {
 		return "redirect:/";
 
 	}
-	
-	//查詢單筆
+
+	// 用文章id查詢單筆
 	@GetMapping("/FindById")
-	public String findBytext_id(@RequestParam("text_id") Long text_id, 
-								Model m
-								) {
-		// 要Service呼叫Dao
+	public String findBytext_id(@RequestParam("text_id") Long text_id, Model m) {
 		ForumJpaBean fbs1 = forumJpaService.findById(text_id);
 		m.addAttribute("fbs1", fbs1);
 		return "forum_FindById";
 	}
-	
-	//發文頁面
+
+	// 發文頁面
 	@GetMapping("/Insert")
 	public String forum(Model model) {
 		return "forum_Insert";
 	}
 
+	// 主頁 查詢全部
 	@GetMapping("/")
 	public String getTexts(Model m) {
-		List<ForumJpaBean> fbs = forumJpaService.findAll();
-		m.addAttribute("fbs1", fbs);
+		List<ForumJpaBean> fbList = forumJpaService.findAll();
+		m.addAttribute("fbList", fbList);
 		return "forum_Main";
 	}
-	
-
 
 }

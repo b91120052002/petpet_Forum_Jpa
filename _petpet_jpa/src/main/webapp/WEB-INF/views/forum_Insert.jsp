@@ -7,9 +7,12 @@
 <html lang="en">
 <head>
 <!-- 新增開始 -->
-<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
 <!-- 新增結束 -->
 <meta charset="UTF-8">
@@ -46,19 +49,19 @@
 }
 </style>
 <!-- 新增開始 -->
-	<style>
-		.picview{
-    	max-height:120px;
-		}
-	</style>
-	<style>
-	 fieldset{
-            width: 50%;
-            border-radius: 20px;
-            border:1px solid silver;
-            margin: auto;
-        }
-    </style>
+<style>
+.picview {
+	max-height: 120px;
+}
+</style>
+<style>
+fieldset {
+	width: 50%;
+	border-radius: 20px;
+	border: 1px solid silver;
+	margin: auto;
+}
+</style>
 <!-- 新增結束 -->
 </head>
 
@@ -186,139 +189,128 @@
 	</div>
 
 	<!----------------------------------------------NEW!!Strat!!-------------------------------------------->
-<fieldset>
-	<div align='center' >
-		<h3>發表新文章</h3>
-		<form id="form">
-			<div align='left'>
-			<div class="form-group">
-
-				<label for="text_sub">請選子版</label> 
-				<select	name="text_sub" class="form-control" id="text_sub">
-					<option value="貓咪">貓咪</option>
-					<option value="狗狗">狗狗</option>
-					<option value="其他">其他</option>
-					<option value="PET">PET</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="text_type">請選類型</label> 
-				<select	name="text_type" class="form-control"
-					id="text_type">
-					<option value="問題">問題</option>
-					<option value="情報">情報</option>
-					<option value="心得">心得</option>
-					<option value="討論">討論</option>
-				</select>
-			</div>
-
-			<div class="form-group">
-				<label for="title">文章標題</label> <input
-					type="text" name="title" required class="form-control"
-					id="title" placeholder="請輸入文章標題">
-				<p id="error_title" style="color:red;"></p>
-					
-			</div>
-			<!-- 文章內容 -->
-			<div class="form-group">
-				<label for="text">文章內容</label>
-				<textarea id="text" name="text" required class="form-control"
-					id="text" placeholder="それは、未来を取り戻す物語。"></textarea>
-				<p id="error_text" style="color:red;"></p>
-					
-			</div>
-			<!-- 圖片 -->
-			<!-- @請求參數增加:1.image -->
-			<div class="form-group">
-				<label class="col-form-label">圖片</label> 
-				<input type="file" class="form-control" placeholder="" name="image" id="imgupload" >
-				<p id="error_file" style="color:red;"></p>
-			</div>
-			<div class="form-group">
-				<label class="col-form-label">圖片預覽</label> 
-				<img id="demo" />
-				<p id="error_file" style="color:red;"></p>
-			</div>
-			</div>
-			<input type="submit" id="submit" class="btn btn-success" value="發文" /> <br>
-			<div id="success" class="text-center" style="color: green;"></div>
-			<div id="error" class="text-center" style="color: red;"></div>
-			<br> <a href="<c:url value='/' />">回首頁</a>
-		</form>
-	</div>
-</fieldset>	
+	<fieldset>
+		<div align='center'>
+			<h3>發表新文章</h3>
+			<form id="form">
+				<div align='left'>
+					<div class="form-group">
+						<label for="text_sub">請選子版</label> <select name="text_sub"
+							class="form-control" id="text_sub">
+							<option value="貓咪">貓咪</option>
+							<option value="狗狗">狗狗</option>
+							<option value="其他">其他</option>
+							<option value="PET">PET</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="text_type">請選類型</label> <select name="text_type"
+							class="form-control" id="text_type">
+							<option value="問題">問題</option>
+							<option value="情報">情報</option>
+							<option value="心得">心得</option>
+							<option value="討論">討論</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="title">文章標題</label> <input type="text" name="title"
+							required class="form-control" id="title" placeholder="請輸入文章標題">
+						<p id="error_title" style="color: red;"></p>
+					</div>
+					<!-- 文章內容 -->
+					<div class="form-group">
+						<label for="text">文章內容</label>
+						<textarea id="text" name="text" required class="form-control"
+							id="text" placeholder="それは、未来を取り戻す物語。"></textarea>
+						<p id="error_text" style="color: red;"></p>
+					</div>
+					<!-- 圖片 -->
+					<!-- @請求參數增加:1.image -->
+					<div class="form-group">
+						<label class="col-form-label">圖片</label> <input type="file"
+							class="form-control" placeholder="" name="image" id="imgupload">
+						<p id="error_file" style="color: red;"></p>
+					</div>
+					<div class="form-group">
+						<label class="col-form-label">圖片預覽</label> <img id="demo" />
+						<p id="error_file" style="color: red;"></p>
+					</div>
+				</div>
+				<input type="submit" id="submit" class="btn btn-success" value="發文" />
+				<br>
+				<div id="success" class="text-center" style="color: green;"></div>
+				<div id="error" class="text-center" style="color: red;"></div>
+				<br> <a href="<c:url value='/' />">回首頁</a>
+			</form>
+		</div>
+	</fieldset>
 	<script>
-
 		//文字編輯器
-	    //CKEDITOR.replace('text');
-		
+		//CKEDITOR.replace('text');
+
 		// 預覽功能
-		$('#imgupload').change(function() {   
-			  var file = $('#imgupload')[0].files[0];
-			  var reader = new FileReader;
-			  reader.onload = function(e) {
-			    $('#demo').attr('src', e.target.result);
-			  };
-			  reader.readAsDataURL(file);
+		$('#imgupload').change(function() {
+			var file = $('#imgupload')[0].files[0];
+			var reader = new FileReader;
+			reader.onload = function(e) {
+				$('#demo').attr('src', e.target.result);
+			};
+			reader.readAsDataURL(file);
+		});
+
+		// AJAX+錯誤回報
+		$(document).ready(function() {
+
+			$("#submit").on("click", function() {
+				$("#submit").prop("disabled", true);//上傳一次
+				var title = $("#title").val();
+				var text = $("#text").val();
+				var text_sub = $("#text_sub").val();
+				var text_type = $("#text_type").val();
+				var file = $("#imageupload").val();
+				var form = $("#form").serialize();
+				// 利用JS的FormData格式來序列化(serialize) input 當中的 name 與 file ，才可以用AJAX方式進行檔案上傳
+				var data = new FormData($("#form")[0]);
+				//如果表格內input的四個如果有空的話，顯示下面的CSS格式，把Submit鎖住，Loader藏起來，邊框改為紅色，Error messgae跳出字串
+				if (title === "" || text === "") {
+					$("#submit").prop("disabled", false);
+					$("#title").css("border-color", "red");
+					$("#text").css("border-color", "red");
+					$("#imgupload").css("border-color", "red");
+					$("#error_title").html("必填欄位");
+					$("#error_text").html("必填欄位");
+				} else {
+
+					//jquery 發送ajax的語法https://ithelp.ithome.com.tw/articles/10226692
+					$.ajax({
+						type : 'POST',
+						enctype : 'multipart/form-data',
+						data : data,
+						url : "/petpet/forum/uploadfile",
+						processData : false, //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
+						contentType : false, //默认值为contentType = "application/x-www-form-urlencoded".在默认情况下，内容编码类型满足大多数情况。但要上傳檔案，要設為False
+						cache : false,
+						success : function(data, statusText, xhr) { //	請求成功時執行函式,  前面新增的FormData物件放在第一個 ，第二個我不知道，第三個XMLHttpRequest(XHR) 物件發送
+							console.log(xhr.status);
+							if (xhr.status == "200") {
+								$("#form")[0].reset();
+								$('#success').css('display', 'block');
+								$("#error").text("");
+								$("#success").html("新增完成"); //錯誤訊息
+								$('#success').delay(5000).fadeOut('slow');
+								// setTimeout( "self.location.reload(); ",5000);  // Reload或轉到其他頁面
+							}
+						},
+						error : function(e) {
+							$('#error').css('display', 'block');
+							$("#error").html("Oops! something went wrong.");
+							$('#error').delay(5000).fadeOut('slow');
+						}
+					});
+				}
 			});
-
-// AJAX+錯誤回報
-$(document).ready(function() {
-
-    $("#submit").on("click", function() {
-    	$("#submit").prop("disabled", true);//上傳一次
-    	var title       = $("#title").val(); 
-    	var text        = $("#text").val(); 
-    	var text_sub    = $("#text_sub").val(); 
-    	var text_type   = $("#text_type").val(); 
-    	var file        = $("#imageupload").val(); 
-        var form = $("#form").serialize();
-        // 利用JS的FormData格式來序列化(serialize) input 當中的 name 與 file ，才可以用AJAX方式進行檔案上傳
-    	var data = new FormData($("#form")[0]);
-        //如果表格內input的四個如果有空的話，顯示下面的CSS格式，把Submit鎖住，Loader藏起來，邊框改為紅色，Error messgae跳出字串
-        if (title === "" || text === "") {
-        	$("#submit").prop("disabled", false);
-            $("#title").css("border-color", "red");
-            $("#text").css("border-color", "red");
-            $("#imgupload").css("border-color", "red");
-            $("#error_title").html("必填欄位");
-            $("#error_text").html("必填欄位");
-        } else {
-            
-            //jquery 發送ajax的語法https://ithelp.ithome.com.tw/articles/10226692
-                    $.ajax({
-                        type: 'POST',
-                        enctype: 'multipart/form-data',
-                        data: data,
-                        url: "/petpet/forum/uploadfile", 
-                        processData: false,  //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
-                        contentType: false,  //默认值为contentType = "application/x-www-form-urlencoded".在默认情况下，内容编码类型满足大多数情况。但要上傳檔案，要設為False
-                        cache: false,
-                        success: function(data, statusText, xhr) {  //	請求成功時執行函式,  前面新增的FormData物件放在第一個 ，第二個我不知道，第三個XMLHttpRequest(XHR) 物件發送
-                        console.log(xhr.status);
-                        if(xhr.status == "200") {
-                        	$("#form")[0].reset();
-                        	$('#success').css('display','block');
-                            $("#error").text("");
-                            $("#success").html("新增完成"); //錯誤訊息
-                            $('#success').delay(5000).fadeOut('slow');
-                            // setTimeout( "self.location.reload(); ",5000);  // Reload或轉到其他頁面
-                         }	   
-                        },
-                        error: function(e) {
-                        	$('#error').css('display','block');
-                            $("#error").html("Oops! something went wrong.");
-                            $('#error').delay(5000).fadeOut('slow');
-                            
-                        }
-                    });
-        }
-            });
-        });
+		});
 	</script>
-
-
-
 
 	<!--services--------------------------------------------->
 	<section class="services">

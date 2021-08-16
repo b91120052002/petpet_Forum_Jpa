@@ -7,9 +7,11 @@
 <html lang="en">
 <head>
 <!-- 新增開始 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 <!-- 新增結束 -->
 <meta charset="UTF-8">
@@ -45,25 +47,27 @@
 }
 </style>
 <!-- 新增開始 -->
-	<style>
-		.picview{
-    	max-height:120px;
-		}
-	</style>
-	<style type="text/css">
-		#contentTable{
-			table-layout:fixed; /* bootstrap-table設定colmuns中某列的寬度無效時，需要給整個表設定css屬性 */
-			word-break:break-all; word-wrap:break-all; /* 自動換行 */
-		}
-	</style>
-	<style>
-	 fieldset{
-            width: 50%;
-            border-radius: 20px;
-            border:1px solid silver;
-            margin: auto;
-        }
-    </style>
+<style>
+.picview {
+	max-height: 120px;
+}
+</style>
+<style type="text/css">
+#contentTable {
+	table-layout: fixed;
+	/* bootstrap-table設定colmuns中某列的寬度無效時，需要給整個表設定css屬性 */
+	word-break: break-all;
+	word-wrap: break-all; /* 自動換行 */
+}
+</style>
+<style>
+fieldset {
+	width: 50%;
+	border-radius: 20px;
+	border: 1px solid silver;
+	margin: auto;
+}
+</style>
 <!-- 新增結束 -->
 </head>
 
@@ -191,8 +195,8 @@
 	</div>
 
 	<!----------------------------------------------NEW!!Strat!!-------------------------------------------->
-	
-<script>
+
+	<script>
 function deleteText(text_id) {
     if (confirm("これが我が『キング・クリムゾン』の能力！")) {
     	let  web="delete?text_id="+text_id;
@@ -208,148 +212,119 @@ function updateText(text_id) {
     return false;
 }
 
-//function deleteReply(reply_id) {
-//    if (confirm("これが我が『キング・クリムゾン』の能力！")) {
-//    	let  web="deleteR?reply_id="+reply_id;
-//    	window.location.href=web;
-    	
-//    }
-//    return false;
-//}
-
-function updateReply(reply_id) {
-    if (confirm("コレが………『レクイエム』……………ダ！！")) {
-    	
-    }
-    return false;
-}
 </script>
-<h3 align='center'><a href="<c:url value='/' />">回首頁</a></h3>
-<fieldset>
-<div align='center'>
+	<h3 align='center'>
+		<a href="<c:url value='/' />">回首頁</a>
+	</h3>
+	<fieldset>
+		<div align='center'>
 
-<form id="form">
-<input type="hidden" id="text_id" name="text_id" value="${fbs1.text_id}" />
-<div align="right">
- <button type="button" id="submit" class="btn btn-success" onclick="updateText(${fbs1.text_id})" >更新</button>
-  <input type="button" value="刪除" name="delete" class="btn btn-danger" onclick="deleteText(${fbs1.text_id})">
-</div>
-  
-  <div align='left'>
-  <div class="form-group">
-    <label for="text_sub">子版</label>
-    <select name="text_sub"
-    	class="form-control" id="text_sub">
-      <option value="${fbs1.text_sub}" selected >${fbs1.text_sub}</option>	
-      <option value="貓咪">貓咪</option>
-      <option value="狗狗">狗狗</option>
-      <option value="其他">其他</option>
-      <option value="PET">PET</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="text_type">類型</label>
-    <select name="text_type"
-    	class="form-control" id="text_type">
-      <option value="${fbs1.text_type}" selected >${fbs1.text_type}</option>	
-      <option value="問題">問題</option>
-      <option value="情報">情報</option>
-      <option value="心得">心得</option>
-      <option value="討論">討論</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="title">文章標題</label>
-    <input type="text" name="title" required 
-    	class="form-control" id="title" value="${fbs1.title}">
-  </div>
+			<form id="form">
+				<input type="hidden" id="text_id" name="text_id"
+					value="${fbs1.text_id}" />
+				<div align="right">
+					<button type="button" id="submit" class="btn btn-success"
+						onclick="updateText(${fbs1.text_id})">更新</button>
+					<input type="button" value="刪除" name="delete"
+						class="btn btn-danger" onclick="deleteText(${fbs1.text_id})">
+				</div>
 
-  <div class="form-group">
-    <label for="text">文章內容</label>
-    <textarea id="text" name="text" required
-    	 class="form-control" ></textarea>
-  </div>
-  <!-- 圖片 -->
-  <div class="col box">
-  	<img class="picview" src="${pageContext.request.contextPath}/product/display/${fbs1.text_id}" class="image" alt=""> 
-  </div>
-  <div class="col box">
-  	<input type="file" class="form-control" placeholder="" name="image" id="imgupload" required="required">
-  </div>
-  <div class="col box">
-  	<label class="col-form-label fontsize">圖片預覽</label>
-    <img id="demo"/>
-    <p id="error_file"></p>		
-  </div>
-  </div>
-  </form>
-  <div align="right">
-	<c:set var="eventmember" value="${fbs1.member}" />
-	<c:if test="${not empty eventmember}">
-	<c:out value="${eventmember.memberid}" /><br>
-	</c:if>
-	<fmt:formatDate pattern="MM/dd HH:mm" value="${fbs1.text_time}" />
-  </div>
-   <div id="message" class="text-center" style="color: green;"></div>
-   <!-- 回覆 -->
-   <div>
-   <form id="repliesform">
- 
-   <table id="contentTable" class="table table-striped table-condensed ">
-   
-   
-   <c:set var="replymember" value="${fbs1.fbR}" />
-	<c:if test="${not empty replymember}">
-	<c:forEach items="${replymember}" var="replymember" varStatus="s">
-	<c:set var="replymembername" value="${replymember}" />
-	<tr>
-	  	
-	<td>
-		${replymembername.member.memberid}
-	</td>
-   	<td>
-   		<input type="text" id="reply_text${s.count}" name="replies_text" value="${replymembername.reply_text}" />
-   		
-   		
-   	</td>
-   	<td>
-		<fmt:formatDate pattern="MM/dd HH:mm" value="${replymembername.reply_date}" />
-	</td>
-	<td>
-		<input type="hidden" id="reply_id${s.count}" name="reply_id" value="${replymembername.reply_id}" />		
-		<button type="button" id="replydelete_${s.count}" class="btn btn-danger" >刪除</button>
-  	</td>
-	</tr>
-	
-	</c:forEach>
-	
-	
-<!-- 利用C:set撈出EL資料，迴圈撈出活動參加人員，Test檢驗是否有參加會員 -->
-                            </c:if> 
-   
-   <fmt:formatDate pattern="MM/dd HH:mm" value="${rps.reply_date}" />
- 
-   </table>
-   </form>
-   </div>
- 
-</div>
-</fieldset>
+				<div align='left'>
+					<div class="form-group">
+						<label for="text_sub">子版</label> <select name="text_sub"
+							class="form-control" id="text_sub">
+							<option value="${fbs1.text_sub}" selected>${fbs1.text_sub}</option>
+							<option value="貓咪">貓咪</option>
+							<option value="狗狗">狗狗</option>
+							<option value="其他">其他</option>
+							<option value="PET">PET</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="text_type">類型</label> <select name="text_type"
+							class="form-control" id="text_type">
+							<option value="${fbs1.text_type}" selected>${fbs1.text_type}</option>
+							<option value="問題">問題</option>
+							<option value="情報">情報</option>
+							<option value="心得">心得</option>
+							<option value="討論">討論</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="title">文章標題</label> <input type="text" name="title"
+							required class="form-control" id="title" value="${fbs1.title}">
+					</div>
 
-<fieldset>
-<div align='left'>
-<form id="repliesf">
-<input type="hidden" id="replytext_id" name="text_id" value="${fbs1.text_id}" />
-	<label for="reply_text">加入討論?</label>
-    <textarea id="reply_text" name="reply_text" required class="form-control" ></textarea>
-    
-</form>
-<div align="right">
-<button type="button" id="replies" class="btn btn-success" >送出回覆</button>
-</div>
-</div>
-</fieldset>
-<script>
+					<div class="form-group">
+						<label for="text">文章內容</label>
+						<textarea id="text" name="text" required class="form-control"></textarea>
+					</div>
+					<!-- 圖片 -->
+					<div class="col box">
+						<img class="picview"
+							src="${pageContext.request.contextPath}/product/display/${fbs1.text_id}"
+							class="image" alt="">
+					</div>
+					<div class="col box">
+						<input type="file" class="form-control" placeholder=""
+							name="image" id="imgupload" required="required">
+					</div>
+					<div class="col box">
+						<label class="col-form-label fontsize">圖片預覽</label> <img id="demo" />
+						<p id="error_file"></p>
+					</div>
+				</div>
+			</form>
+			<div align="right">
+				<c:set var="forummember" value="${fbs1.member}" />
+				<c:if test="${not empty forummember}">
+					<c:out value="${forummember.memberid}" />
+					<br>
+				</c:if>
+				<fmt:formatDate pattern="MM/dd HH:mm" value="${fbs1.text_time}" />
+			</div>
+			<div id="message" class="text-center" style="color: green;"></div>
+			<!-- 回覆 -->
+			<div>
+				<form id="repliesform">
+					<table id="contentTable"
+						class="table table-striped table-condensed ">
+						<c:set var="replymember" value="${fbs1.fbR}" />
+						<c:if test="${not empty replymember}">
+							<c:forEach items="${replymember}" var="replymember" varStatus="s">
+								<c:set var="replymembername" value="${replymember}" />
+								<tr>
+									<td>${replymembername.member.memberid}</td>
+									<td><input type="text" id="reply_text${s.count}"
+										name="replies_text" value="${replymembername.reply_text}" />
+									</td>
+									<td align="right"><fmt:formatDate pattern="MM/dd HH:mm" value="${replymembername.reply_date}" /></td>
+									<td align="right"><input type="hidden" id="reply_id${s.count}"
+										name="reply_id" value="${replymembername.reply_id}" />
+										<button type="button" id="replydelete_${s.count}"
+											class="btn btn-danger">刪除</button></td>
+								</tr>
+							</c:forEach>
+						</c:if>
+						<fmt:formatDate pattern="MM/dd HH:mm" value="${rps.reply_date}" />
+					</table>
+				</form>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<div align='left'>
+			<form id="repliesf">
+				<input type="hidden" id="replytext_id" name="text_id"
+					value="${fbs1.text_id}" /> <label for="reply_text">加入討論?</label>
+				<textarea id="reply_text" name="reply_text" required class="form-control"></textarea>
+			</form>
+			<div align="right">
+				<button type="button" id="replies" class="btn btn-success">送出回覆</button>
+			</div>
+		</div>
+	</fieldset>
+	<script>
 
   $("#text").val("${fbs1.text}");
 //  $(document).ready(function() {
@@ -463,21 +438,14 @@ function updateReply(reply_id) {
 	                         }	   
 	                        },
 	                        error: function(e) {
-								console.log('錯誤');
-								
-	                            // location.reload();
+								console.log('錯誤');								
+	                            location.reload();
 	                        }
-	                    });
-	  
+	                    });	  
 	            });
 	        });
 
-
 </script>
-
-
-
-
 
 	<!--services--------------------------------------------->
 	<section class="services">

@@ -139,7 +139,7 @@
 									value="發文" /> <br>
 								<div id="success" class="text-center" style="color: green;"></div>
 								<div id="error" class="text-center" style="color: red;"></div>
-								<br> <a href="<c:url value='/BackStage' />">回前頁</a>
+								<br> <a href="<c:url value='/BackStage' />">回首頁</a>
 							</form>
 						</div>
 					</fieldset>
