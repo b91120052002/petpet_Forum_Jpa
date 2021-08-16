@@ -64,11 +64,10 @@
 								</h2>
 							</div>
 							<div class="col-sm-5">
-								<a href="${pageContext.request.contextPath}/BackStageInsert"
-									class="btn btn-success"><i class="material-icons">&#xE147;</i>
-									<span>新增文章</span></a> <a href="#deleteEmployeeModal"
-									class="btn btn-danger"><i class="material-icons">&#xE15C;</i>
-									<span>刪除文章</span></a>
+								<a href="${pageContext.request.contextPath}/BackStageInsert" class="btn btn-success"><i class="material-icons">&#xE147;</i>
+									<span>新增文章</span></a> 
+						    	<a href="#deleteEmployeeModal" class="btn btn-danger"><i class="material-icons">&#xE15C;</i> <span>刪除文章</span></a>
+									
 							</div>
 							<div class="col-sm-3">
 								<div class="search-box">
@@ -113,9 +112,9 @@
 									</span>
 									</td>
 									<td><c:out value="${fbs.text_id}" /></td>
-									<td><c:set var="eventmember" value="${fbs.member}" /> <c:if
-											test="${not empty eventmember}">
-											<c:out value="${eventmember.memberid}" />
+									<td><c:set var="forummember" value="${fbs.member}" /> <c:if
+											test="${not empty forummember}">
+											<c:out value="${forummember.memberid}" />
 										</c:if></td>
 									<td><a
 										href="<c:url value='/BackStageFindById' />?text_id=${fbs.text_id}">
@@ -127,7 +126,6 @@
 										src="${pageContext.request.contextPath}/product/display/${fbs.text_id}" /></td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd aa HH:mm"
 											value='${fbs.text_time}' /></td>
-									<!-- <td><c:out value="${event.eventClick}"/></td> -->
 									<td><a
 										href='<c:url value='/BackStageFindById' />?text_id=${fbs.text_id}'
 										class="edit" id="update"> <i class="material-icons"
@@ -188,8 +186,7 @@
         });
         console.log(ckdlist.toString());
         ckdlist.forEach (id =>
-        $.get ("/petpet/forum/deletebs?text_id="+text_id, function() {
-                alert( "刪除成功" );
+        $.get ("/petpet/forum/deletebs?text_id="+id, function() {
                 location.reload() ;
             })
         )   
@@ -197,11 +194,6 @@
     
 })
 
-
 </script>
-
 </body>
-
-
-
 </html>

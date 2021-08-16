@@ -15,7 +15,7 @@ import com.petpet.service.MemberService;
 import com.petpet.service.RepliesService;
 
 @Controller
-public class ForumMainController {
+public class ForumJpaController {
 
 	@Autowired
 	ForumJpaService forumJpaService;

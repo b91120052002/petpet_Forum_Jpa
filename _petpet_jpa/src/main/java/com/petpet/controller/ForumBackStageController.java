@@ -47,7 +47,9 @@ public class ForumBackStageController {
 	}
 	
 	@GetMapping("/deletebs")
-	public String deletebs(@RequestParam Long text_id, Model m) {
+	public String deletebs(@RequestParam Long text_id, 
+							Model m
+							) {
 		forumJpaService.deleteById(text_id);
 		List<ForumJpaBean> fbs = forumJpaService.findAll();
 		m.addAttribute("fbs1", fbs);

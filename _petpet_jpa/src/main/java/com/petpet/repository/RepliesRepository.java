@@ -7,5 +7,6 @@ import com.petpet.model.Replies;
 
 @Repository("RepliesRepository")
 public interface RepliesRepository extends JpaRepository<Replies, Long> {
+	
 
 }

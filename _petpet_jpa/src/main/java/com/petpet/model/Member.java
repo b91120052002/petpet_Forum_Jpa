@@ -3,6 +3,7 @@ package com.petpet.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,10 +24,10 @@ public class Member {
 	@Column(name = "memberid")
 	private String memberid;
 	
-	@OneToMany(mappedBy = "member", targetEntity = ForumJpaBean.class)
+	@OneToMany(mappedBy = "member", targetEntity = ForumJpaBean.class, cascade = CascadeType.ALL)
 	private Set<ForumJpaBean> member = new HashSet<ForumJpaBean>();
 	
-	@OneToMany(mappedBy = "member", targetEntity = Replies.class)
+	@OneToMany(mappedBy = "member", targetEntity = Replies.class, cascade = CascadeType.ALL)
 	private Set<Replies> memberR = new HashSet<Replies>();
 
 	public Long getId() {

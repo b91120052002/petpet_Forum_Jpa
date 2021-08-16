@@ -169,9 +169,10 @@ function updateReply(reply_id) {
 								</div>
 							</form>
 							<div align="right">
-								<c:set var="eventmember" value="${fbs1.member}" />
-								<c:if test="${not empty eventmember}">
-									<c:out value="${eventmember.memberid}" />
+								<c:set var="forummember" value="${fbs1.member}" />
+								<c:if test="${not empty forummember}">
+									<span>作者:</span>
+									<c:out value="${forummember.memberid}" />
 									<br>
 								</c:if>
 								<fmt:formatDate pattern="MM/dd HH:mm" value="${fbs1.text_time}" />
@@ -191,7 +192,7 @@ function updateReply(reply_id) {
 												varStatus="s">
 												<c:set var="replymembername" value="${replymember}" />
 												<tr>
-
+													<td>${s.count}樓</td>
 													<td>${replymembername.member.memberid}</td>
 													<td><input type="text" id="reply_text${s.count}"
 														name="replies_text" value="${replymembername.reply_text}" />

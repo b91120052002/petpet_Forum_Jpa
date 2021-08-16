@@ -278,6 +278,7 @@ function updateText(text_id) {
 			<div align="right">
 				<c:set var="forummember" value="${fbs1.member}" />
 				<c:if test="${not empty forummember}">
+					<span>作者:</span>
 					<c:out value="${forummember.memberid}" />
 					<br>
 				</c:if>
@@ -294,6 +295,7 @@ function updateText(text_id) {
 							<c:forEach items="${replymember}" var="replymember" varStatus="s">
 								<c:set var="replymembername" value="${replymember}" />
 								<tr>
+									<td>${s.count}樓</td>
 									<td>${replymembername.member.memberid}</td>
 									<td><input type="text" id="reply_text${s.count}"
 										name="replies_text" value="${replymembername.reply_text}" />
