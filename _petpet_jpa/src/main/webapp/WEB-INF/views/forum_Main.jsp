@@ -196,7 +196,7 @@ fieldset {
 				<thead>
 					<tr align='right'>
 						<th scope="col" style="width: 80px;"></th>
-						<th scope="col" style="width: 80px;"></th>
+						<th scope="col" style="width: 160px;"></th>
 						<th scope="col" style="width: 160px;"></th>
 						<th scope="col" style="width: 80px;"></th>	
 						<th scope="col" style="width: 80px;"><a
@@ -229,7 +229,7 @@ fieldset {
 								人氣:
 								<c:out value="${ForumJpaBean.text_click}" />
 								<br>
-								回覆:
+								互動:
 								<c:out value="${ForumJpaBean.text_replies}" />
 								</td>
 						</tr>

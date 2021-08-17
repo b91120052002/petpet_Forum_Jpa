@@ -380,7 +380,7 @@ function updateText(text_id) {
   
             });
         });
-	//AJAX送出回覆表單
+	//AJAX送出回覆
   $(document).ready(function() {
 	    $("#replies").on("click", function() {
 	    	$("#replies").prop("disabled", true);//上傳一次
@@ -431,7 +431,7 @@ function updateText(text_id) {
 	                        
 	                        processData: false,  //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
 	                        contentType: false,  //默认值为contentType = "application/x-www-form-urlencoded".在默认情况下，内容编码类型满足大多数情况。但要上傳檔案，要設為False
-	                        cache: true,
+	                        cache: true, //改true
 	                        success: function(data, statusText, xhr) {  //	請求成功時執行函式,  前面新增的FormData物件放在第一個 ，第二個我不知道，第三個XMLHttpRequest(XHR) 物件發送
 	                        console.log(xhr.status);
 	                        if(xhr.status == "200") {

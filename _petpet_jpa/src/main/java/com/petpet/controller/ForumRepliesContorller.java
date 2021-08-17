@@ -38,10 +38,9 @@ public class ForumRepliesContorller {
 	
 	//刪除回覆
 	@RequestMapping(path="/deleteR/{id}", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?>  deleteReply(@PathVariable("id") Long reply_id) {
-		System.out.println(reply_id);
-		repliesService.delete(reply_id);
-		
+	public @ResponseBody ResponseEntity<?>  deleteReply(@PathVariable("id") Long reply_id
+														) {
+		repliesService.delete(reply_id);	
 		return new ResponseEntity<>("刪除成功", HttpStatus.OK);
 	}
 	
