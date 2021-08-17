@@ -36,10 +36,13 @@ public class ForumJpaController {
 
 	}
 
-	// 用文章id查詢單筆
+	// 用文章id查詢單筆 & 前台點閱+1
 	@GetMapping("/FindById")
 	public String findBytext_id(@RequestParam("text_id") Long text_id, Model m) {
 		ForumJpaBean fbs1 = forumJpaService.findById(text_id);
+		fbs1.setText_click(fbs1.getText_click()+1);
+		System.out.println(fbs1);
+		forumJpaService.save(fbs1);
 		m.addAttribute("fbs1", fbs1);
 		return "forum_FindById";
 	}

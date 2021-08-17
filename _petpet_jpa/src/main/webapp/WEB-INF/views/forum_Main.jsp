@@ -198,8 +198,9 @@ fieldset {
 						<th scope="col" style="width: 80px;"></th>
 						<th scope="col" style="width: 80px;"></th>
 						<th scope="col" style="width: 160px;"></th>
+						<th scope="col" style="width: 80px;"></th>	
 						<th scope="col" style="width: 80px;"><a
-							href="<c:url value='/Insert' />" class="btn btn-success">發文</a></th>
+							href="<c:url value='/Insert' />" class="btn btn-success">發文</a></th>						
 					</tr>
 				</thead>
 				<c:forEach var='ForumJpaBean' items='${fbList}'>
@@ -223,6 +224,10 @@ fieldset {
 								<c:if test="${not empty forummember}">
 								<c:out value="${forummember.memberid}" />
 								</c:if>
+								</td>
+								<td>
+								人氣:
+								<c:out value="${ForumJpaBean.text_click}" />
 								</td>
 						</tr>
 					</tbody>

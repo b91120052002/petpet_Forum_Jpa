@@ -43,6 +43,9 @@ public class ForumJpaBean {
 	private byte[] text_image;
 	@Column(name = "text_image_name")
 	private String text_image_name;
+	@Column(name = "text_click")
+	private Long text_click;
+	
 
 	@ManyToOne
 	private Member member;
@@ -114,6 +117,14 @@ public class ForumJpaBean {
 		this.text_image_name = text_image_name;
 	}
 
+	public long getText_click() {
+		return text_click;
+	}
+
+	public void setText_click(long text_click) {
+		this.text_click = text_click;
+	}
+
 	public Member getMember() {
 		return member;
 	}
@@ -131,7 +142,7 @@ public class ForumJpaBean {
 	}
 
 	public ForumJpaBean(Long text_id, String title, String text, Date text_time, String text_sub, String text_type,
-			byte[] text_image, String text_image_name, Member member, List<Replies> fbR) {
+			byte[] text_image, String text_image_name, long text_click, Member member, List<Replies> fbR) {
 		super();
 		this.text_id = text_id;
 		this.title = title;
@@ -141,13 +152,16 @@ public class ForumJpaBean {
 		this.text_type = text_type;
 		this.text_image = text_image;
 		this.text_image_name = text_image_name;
+		this.text_click = text_click;
 		this.member = member;
 		this.fbR = fbR;
 	}
 
 	public ForumJpaBean() {
-		super();
+
 	}
+
+	
 
 	
 

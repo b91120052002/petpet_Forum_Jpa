@@ -71,6 +71,8 @@ public class ForumImgController {
 			product.setText(text);
 			product.setText_sub(text_sub);
 			product.setText_type(text_type);
+			
+
 			forumJpaService.save(product);
 			log.info("HttpStatus===" + new ResponseEntity<>(HttpStatus.OK));
 			return new ResponseEntity<>("Product Saved With File", HttpStatus.OK);
@@ -138,6 +140,7 @@ public class ForumImgController {
 		product.setText(text);
 		product.setText_sub(text_sub);
 		product.setText_type(text_type);
+		product.setText_click(0);
 		forumJpaService.save(product);
 		
 		System.out.println(product);
