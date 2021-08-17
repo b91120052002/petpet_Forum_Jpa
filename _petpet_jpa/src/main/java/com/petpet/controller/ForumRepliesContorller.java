@@ -2,8 +2,6 @@ package com.petpet.controller;
 
 import java.util.Date;
 
-import javax.websocket.server.PathParam;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +35,8 @@ public class ForumRepliesContorller {
 	
 	@Autowired
 	RepliesService repliesService;
-		
+	
+	//刪除回覆
 	@RequestMapping(path="/deleteR/{id}", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?>  deleteReply(@PathVariable("id") Long reply_id) {
 		System.out.println(reply_id);
@@ -46,16 +45,15 @@ public class ForumRepliesContorller {
 		return new ResponseEntity<>("刪除成功", HttpStatus.OK);
 	}
 	
-	
+	//新增回覆
 	@RequestMapping(path="/replies", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> saveReply (@RequestParam("reply_text") String reply_text, 
-															@RequestParam("text_id") Long text_id,
-																Model model
-																){
+														@RequestParam("text_id") Long text_id,
+														Model model
+														){
 	try {		
 		System.out.println(model);
-		Date createDate = new Date();  //沒有建構子會寫入現在時間
-
+		Date createDate = new Date();
 		
 		Replies rp = new Replies();
 					
@@ -63,6 +61,7 @@ public class ForumRepliesContorller {
 		rp.setMember(member);
 		
 		ForumJpaBean fb = forumJpaService.findById(text_id);
+		fb.setText_replies(fb.getText_replies()+1);
 		rp.setForumJpaBean(fb);
 		
 		rp.setReply_date(createDate);

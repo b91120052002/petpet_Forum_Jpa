@@ -140,7 +140,9 @@ public class ForumImgController {
 		product.setText(text);
 		product.setText_sub(text_sub);
 		product.setText_type(text_type);
-		product.setText_click(0);
+		product.setText_click((long) 0);
+		product.setText_replies((long) 0);
+
 		forumJpaService.save(product);
 		
 		System.out.println(product);

@@ -228,6 +228,9 @@ fieldset {
 								<td>
 								人氣:
 								<c:out value="${ForumJpaBean.text_click}" />
+								<br>
+								回覆:
+								<c:out value="${ForumJpaBean.text_replies}" />
 								</td>
 						</tr>
 					</tbody>

@@ -3,8 +3,6 @@ package com.petpet.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,6 +43,8 @@ public class ForumJpaBean {
 	private String text_image_name;
 	@Column(name = "text_click")
 	private Long text_click;
+	@Column(name = "text_replies")
+	private Long text_replies;
 	
 
 	@ManyToOne
@@ -117,12 +117,20 @@ public class ForumJpaBean {
 		this.text_image_name = text_image_name;
 	}
 
-	public long getText_click() {
+	public Long getText_click() {
 		return text_click;
 	}
 
-	public void setText_click(long text_click) {
+	public void setText_click(Long text_click) {
 		this.text_click = text_click;
+	}
+
+	public Long getText_replies() {
+		return text_replies;
+	}
+
+	public void setText_replies(Long text_replies) {
+		this.text_replies = text_replies;
 	}
 
 	public Member getMember() {
@@ -142,7 +150,8 @@ public class ForumJpaBean {
 	}
 
 	public ForumJpaBean(Long text_id, String title, String text, Date text_time, String text_sub, String text_type,
-			byte[] text_image, String text_image_name, long text_click, Member member, List<Replies> fbR) {
+			byte[] text_image, String text_image_name, Long text_click, Long text_replies, Member member,
+			List<Replies> fbR) {
 		super();
 		this.text_id = text_id;
 		this.title = title;
@@ -153,13 +162,15 @@ public class ForumJpaBean {
 		this.text_image = text_image;
 		this.text_image_name = text_image_name;
 		this.text_click = text_click;
+		this.text_replies = text_replies;
 		this.member = member;
 		this.fbR = fbR;
 	}
 
 	public ForumJpaBean() {
-
 	}
+
+	
 
 	
 
