@@ -1,4 +1,4 @@
-package com.petpet.controller;
+package com.petpet.forum.controller;
 
 import java.io.IOException;
 import java.util.Date;
@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.petpet.model.ForumJpaBean;
-import com.petpet.model.Member;
-import com.petpet.service.ForumJpaService;
-import com.petpet.service.MemberService;
+import com.petpet.forum.model.ForumJpaBean;
+import com.petpet.forum.model.Member;
+import com.petpet.forum.service.ForumJpaService;
+import com.petpet.forum.service.MemberService;
 
 @Controller
 public class ForumImgController {

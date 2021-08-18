@@ -1,4 +1,4 @@
-package com.petpet.controller;
+package com.petpet.forum.controller;
 
 import java.util.List;
 
@@ -8,11 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.petpet.model.ForumJpaBean;
-import com.petpet.model.Member;
-import com.petpet.service.ForumJpaService;
-import com.petpet.service.MemberService;
-import com.petpet.service.RepliesService;
+import com.petpet.forum.model.ForumJpaBean;
+import com.petpet.forum.service.ForumJpaService;
+import com.petpet.forum.service.MemberService;
+import com.petpet.forum.service.RepliesService;
 
 @Controller
 public class ForumJpaController {

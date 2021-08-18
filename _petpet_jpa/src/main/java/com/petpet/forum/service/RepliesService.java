@@ -1,9 +1,9 @@
-package com.petpet.service;
+package com.petpet.forum.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.petpet.model.Replies;
+import com.petpet.forum.model.Replies;
 
 public interface RepliesService {
 

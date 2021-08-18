@@ -1,4 +1,4 @@
-package com.petpet.service.impl;
+package com.petpet.forum.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,9 +8,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.petpet.model.Replies;
-import com.petpet.repository.RepliesRepository;
-import com.petpet.service.RepliesService;
+import com.petpet.forum.model.Replies;
+import com.petpet.forum.repository.RepliesRepository;
+import com.petpet.forum.service.RepliesService;
 
 @Service
 @Transactional

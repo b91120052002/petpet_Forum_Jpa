@@ -1,4 +1,4 @@
-package com.petpet.service.impl;
+package com.petpet.forum.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,12 +6,11 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.petpet.model.ForumJpaBean;
-import com.petpet.repository.ForumJpaRepository;
-import com.petpet.service.ForumJpaService;
+import com.petpet.forum.model.ForumJpaBean;
+import com.petpet.forum.repository.ForumJpaRepository;
+import com.petpet.forum.service.ForumJpaService;
 
 @Service
 @Transactional

@@ -1,4 +1,4 @@
-package com.petpet.model;
+package com.petpet.forum.model;
 
 import java.util.ArrayList;
 import java.util.Date;

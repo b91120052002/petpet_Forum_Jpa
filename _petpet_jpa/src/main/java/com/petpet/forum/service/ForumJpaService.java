@@ -1,9 +1,9 @@
-package com.petpet.service;
+package com.petpet.forum.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.petpet.model.ForumJpaBean;
+import com.petpet.forum.model.ForumJpaBean;
 
 public interface ForumJpaService {
 
