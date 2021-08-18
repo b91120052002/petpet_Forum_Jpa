@@ -108,29 +108,29 @@
 											id="checkbox<c:out value='${i.index+1}'/>" name="options[]"
 											value="<c:out value='${i.index+1}'/>"> <label
 											for="checkbox"></label>
-											<p style="display: none">${fbs.text_id}</p>
+											<p style="display: none">${fbs.textId}</p>
 									</span>
 									</td>
-									<td><c:out value="${fbs.text_id}" /></td>
+									<td><c:out value="${fbs.textId}" /></td>
 									<td><c:set var="forummember" value="${fbs.member}" /> <c:if
 											test="${not empty forummember}">
 											<c:out value="${forummember.memberid}" />
 										</c:if></td>
 									<td><a
-										href="<c:url value='/BackStageFindById' />?text_id=${fbs.text_id}">
+										href="<c:url value='/BackStageFindById' />?textId=${fbs.textId}">
 											${fbs.title} </a></td>
 									<td><c:out value="${fbs.text_sub}" /></td>
 									<td><c:out value="${fbs.text_type}" /></td>
 									<td><c:out value="${fbs.text}" /></td>
 									<td><img class="picview"
-										src="${pageContext.request.contextPath}/product/display/${fbs.text_id}" /></td>
+										src="${pageContext.request.contextPath}/product/display/${fbs.textId}" /></td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd aa HH:mm"
 											value='${fbs.text_time}' /></td>
 									<td><a
-										href='<c:url value='/BackStageFindById' />?text_id=${fbs.text_id}'
+										href='<c:url value='/BackStageFindById' />?textId=${fbs.textId}'
 										class="edit" id="update"> <i class="material-icons"
 											data-toggle="tooltip" title="修改">&#xE254;</i></a> <a
-										href="/petpet/forum/deletebs?text_id=${fbs.text_id}"
+										href="/petpet/forum/deletebs?textId=${fbs.textId}"
 										class="delete" id="delete"><i class="material-icons"
 											data-toggle="tooltip" title="刪除">&#xE872;</i></a></td>
 								</tr>
@@ -146,7 +146,7 @@
  $(document).ready(function() {
     $("#delete").on("click", function() {
         if (confirm("刪除確認")) {
-             let  web="/petpet/forum/deletebs?text_id=${fbs.text_id}"+text_id;
+             let  web="/petpet/forum/deletebs?textId=${fbs.textId}"+textId;
              window.location.href=web;
             //$.get( "/petpet/forum/deletebs?textId=${fbs.textId}", function() {
                 alert( "刪除成功" );
@@ -186,7 +186,7 @@
         });
         console.log(ckdlist.toString());
         ckdlist.forEach (id =>
-        $.get ("/petpet/forum/deletebs?text_id="+id, function() {
+        $.get ("/petpet/forum/deletebs?textId="+id, function() {
                 location.reload() ;
             })
         )   

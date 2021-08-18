@@ -27,8 +27,8 @@ public class ForumJpaController {
 
 	// 用文章id刪除後回到主頁
 	@GetMapping("/delete")
-	public String delete(@RequestParam Long text_id, Model m) {
-		forumJpaService.deleteById(text_id);
+	public String delete(@RequestParam Long textId, Model m) {
+		forumJpaService.deleteById(textId);
 		List<ForumJpaBean> fbs = forumJpaService.findAll();
 		m.addAttribute("fbs1", fbs);
 		return "forum/redirect:/";
@@ -37,8 +37,8 @@ public class ForumJpaController {
 
 	// 用文章id查詢單筆 & 前台點閱+1
 	@GetMapping("/FindById")
-	public String findBytext_id(@RequestParam("text_id") Long text_id, Model m) {
-		ForumJpaBean fbs1 = forumJpaService.findById(text_id);
+	public String findBytextId(@RequestParam("textId") Long textId, Model m) {
+		ForumJpaBean fbs1 = forumJpaService.findById(textId);
 		fbs1.setText_click(fbs1.getText_click()+1);
 		System.out.println(fbs1);
 		forumJpaService.save(fbs1);

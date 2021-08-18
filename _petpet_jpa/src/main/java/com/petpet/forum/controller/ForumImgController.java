@@ -42,7 +42,7 @@ public class ForumImgController {
 	
 	//更新
 	@RequestMapping(path="/updatefile", method = RequestMethod.POST)
-	public @ResponseBody ResponseEntity<?> upldateproduct (	@RequestParam("text_id") Long text_id,
+	public @ResponseBody ResponseEntity<?> upldateproduct (	@RequestParam("textId") Long textId,
 															@RequestParam("title") String title, 
 															@RequestParam("text") String text,
 															@RequestParam("text_sub") String text_sub,
@@ -54,7 +54,7 @@ public class ForumImgController {
 
 			Date createDate = new Date();  //變成是現在的修改時間匯入
 
-			ForumJpaBean product = forumJpaService.getTextById(text_id).orElse(null);
+			ForumJpaBean product = forumJpaService.getTextById(textId).orElse(null);
 				
 			byte[] imageData1= product.getText_image();
 			
@@ -86,14 +86,14 @@ public class ForumImgController {
 		}
 	
 	
-	@GetMapping("/product/display/{text_id}")  // 用來匯出資料庫的圖片
+	@GetMapping("/product/display/{textId}")  // 用來匯出資料庫的圖片
 	@ResponseBody
-	public void showImage(@PathVariable("text_id") Long text_id, 
+	public void showImage(@PathVariable("textId") Long textId, 
 							HttpServletResponse response, 
 							Optional<ForumJpaBean> product
 							) throws ServletException, IOException {
-		log.info("text_id :: " + text_id);
-		product = forumJpaService.getTextById(text_id);
+		log.info("textId :: " + textId);
+		product = forumJpaService.getTextById(textId);
 		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
 		response.getOutputStream().write(product.get().getText_image());
 		response.getOutputStream().close();

@@ -197,15 +197,15 @@ fieldset {
 	<!----------------------------------------------NEW!!Strat!!-------------------------------------------->
 
 	<script>
-function deleteText(text_id) {
+function deleteText(textId) {
     if (confirm("これが我が『キング・クリムゾン』の能力！")) {
-    	let  web="delete?text_id="+text_id;
+    	let  web="delete?textId="+textId;
     	window.location.href=web;
     	
     }
     return false;
 }
-function updateText(text_id) {
+function updateText(textId) {
     if (confirm("コレが………『レクイエム』……………ダ！！")) {
     	
     }
@@ -220,13 +220,13 @@ function updateText(text_id) {
 		<div align='center'>
 
 			<form id="form">
-				<input type="hidden" id="text_id" name="text_id"
-					value="${fbs1.text_id}" />
+				<input type="hidden" id="textId" name="textId"
+					value="${fbs1.textId}" />
 				<div align="right">
 					<button type="button" id="submit" class="btn btn-success"
-						onclick="updateText(${fbs1.text_id})">更新</button>
+						onclick="updateText(${fbs1.textId})">更新</button>
 					<input type="button" value="刪除" name="delete"
-						class="btn btn-danger" onclick="deleteText(${fbs1.text_id})">
+						class="btn btn-danger" onclick="deleteText(${fbs1.textId})">
 				</div>
 
 				<div align='left'>
@@ -262,7 +262,7 @@ function updateText(text_id) {
 					<!-- 圖片 -->
 					<div class="col box">
 						<img class="picview"
-							src="${pageContext.request.contextPath}/product/display/${fbs1.text_id}"
+							src="${pageContext.request.contextPath}/product/display/${fbs1.textId}"
 							class="image" alt="">
 					</div>
 					<div class="col box">
@@ -317,8 +317,8 @@ function updateText(text_id) {
 	<fieldset>
 		<div align='left'>
 			<form id="repliesf">
-				<input type="hidden" id="replytext_id" name="text_id"
-					value="${fbs1.text_id}" /> <label for="reply_text">加入討論?</label>
+				<input type="hidden" id="replytextId" name="textId"
+					value="${fbs1.textId}" /> <label for="reply_text">加入討論?</label>
 				<textarea id="reply_text" name="reply_text" required class="form-control"></textarea>
 			</form>
 			<div align="right">

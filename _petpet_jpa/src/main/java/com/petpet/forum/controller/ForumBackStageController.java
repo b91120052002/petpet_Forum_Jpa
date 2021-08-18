@@ -25,11 +25,11 @@ public class ForumBackStageController {
 	
 	//查詢單筆
 	@GetMapping("/BackStageFindById")
-	public String findBytext_id(@RequestParam("text_id") Long text_id, 
+	public String findBytextId(@RequestParam("textId") Long textId, 
 								Model m
 								) {
 		// 要Service呼叫Dao
-		ForumJpaBean fbs1 = forumJpaService.findById(text_id);
+		ForumJpaBean fbs1 = forumJpaService.findById(textId);
 		m.addAttribute("fbs1", fbs1);
 		return "forum/forum_BackStage_FindById";
 	}
@@ -48,10 +48,10 @@ public class ForumBackStageController {
 	}
 	
 	@GetMapping("/deletebs")
-	public String deletebs(@RequestParam Long text_id, 
+	public String deletebs(@RequestParam Long textId, 
 							Model m
 							) {
-		forumJpaService.deleteById(text_id);
+		forumJpaService.deleteById(textId);
 		List<ForumJpaBean> fbs = forumJpaService.findAll();
 		m.addAttribute("fbs1", fbs);
 		return "redirect:forum/BS";

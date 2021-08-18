@@ -30,24 +30,24 @@ public class ForumJpaServiceImpl implements ForumJpaService {
 	}
 
 	@Override
-	public void deleteById(Long text_id) {
-		forumJpaRepository.deleteById(text_id);
+	public void deleteById(Long textId) {
+		forumJpaRepository.deleteById(textId);
 	}
 
 	@Override
 	public List<ForumJpaBean> findAll() {
 		return forumJpaRepository.findAll();
-		//Sort.by(Sort.Direction.DESC, "text_id")不能用了哭啊
+		//Sort.by(Sort.Direction.DESC, "textId")不能用了哭啊
 	}
 
 	@Override
-	public ForumJpaBean findById(Long text_id) {
-		return forumJpaRepository.getById(text_id);
+	public ForumJpaBean findById(Long textId) {
+		return forumJpaRepository.getById(textId);
 	}
 
 	@Override
-	public Optional<ForumJpaBean> getTextById(Long text_id) {
-		return forumJpaRepository.findById(text_id); // 由於在ProductRepository有繼承JpaRepository方法，這邊就可以直接使用方法
+	public Optional<ForumJpaBean> getTextById(Long textId) {
+		return forumJpaRepository.findById(textId); // 由於在ProductRepository有繼承JpaRepository方法，這邊就可以直接使用方法
 	}
 	
 	

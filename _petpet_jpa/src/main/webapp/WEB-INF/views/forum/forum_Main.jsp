@@ -208,12 +208,12 @@ fieldset {
 						<tr>
 							<th scope="row">${ForumJpaBean.text_sub}/${ForumJpaBean.text_type}</th>
 							<td><a
-								href="<c:url value='/FindById' />?text_id=${ForumJpaBean.text_id}"><img
+								href="<c:url value='/FindById' />?textId=${ForumJpaBean.textId}"><img
 									class="picview"
-									src="${pageContext.request.contextPath}/product/display/${ForumJpaBean.text_id}" /></a></td>
+									src="${pageContext.request.contextPath}/product/display/${ForumJpaBean.textId}" /></a></td>
 							<td>
 								<div>
-									<a href="<c:url value='/FindById' />?text_id=${ForumJpaBean.text_id}">${ForumJpaBean.title}</a>
+									<a href="<c:url value='/FindById' />?textId=${ForumJpaBean.textId}">${ForumJpaBean.title}</a>
 								</div>
 								<p>${ForumJpaBean.text}</p>
 							</td>

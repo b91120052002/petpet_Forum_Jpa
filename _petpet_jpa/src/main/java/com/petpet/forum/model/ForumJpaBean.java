@@ -23,7 +23,7 @@ public class ForumJpaBean {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "text_id")
-	private Long text_id;
+	private Long textId;
 	
 	@Column(name = "title")
 	private String title;
@@ -53,12 +53,12 @@ public class ForumJpaBean {
 	@OneToMany(mappedBy = "forumJpaBean", targetEntity = Replies.class, cascade = CascadeType.ALL)
 	private List<Replies> fbR = new ArrayList<Replies>();
 
-	public Long getText_id() {
-		return text_id;
+	public Long getTextId() {
+		return textId;
 	}
 
-	public void setText_id(Long text_id) {
-		this.text_id = text_id;
+	public void setTextId(Long textId) {
+		this.textId = textId;
 	}
 
 	public String getTitle() {
@@ -149,11 +149,11 @@ public class ForumJpaBean {
 		this.fbR = fbR;
 	}
 
-	public ForumJpaBean(Long text_id, String title, String text, Date text_time, String text_sub, String text_type,
+	public ForumJpaBean(Long textId, String title, String text, Date text_time, String text_sub, String text_type,
 			byte[] text_image, String text_image_name, Long text_click, Long text_replies, Member member,
 			List<Replies> fbR) {
 		super();
-		this.text_id = text_id;
+		this.textId = textId;
 		this.title = title;
 		this.text = text;
 		this.text_time = text_time;

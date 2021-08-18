@@ -7,16 +7,16 @@ import com.petpet.forum.model.ForumJpaBean;
 
 public interface ForumJpaService {
 
-	Optional<ForumJpaBean> getTextById(Long text_id);
+	Optional<ForumJpaBean> getTextById(Long textId);
 
 	ForumJpaBean save(ForumJpaBean fb);
 
 	void delete(ForumJpaBean fb);
 
-	void deleteById(Long text_id);
+	void deleteById(Long textId);
 
 	List<ForumJpaBean> findAll();
 
-	ForumJpaBean findById(Long text_id);
+	ForumJpaBean findById(Long textId);
 	
 }

@@ -47,7 +47,7 @@ public class ForumRepliesContorller {
 	//新增回覆
 	@RequestMapping(path="/replies", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> saveReply (@RequestParam("reply_text") String reply_text, 
-														@RequestParam("text_id") Long text_id,
+														@RequestParam("textId") Long textId,
 														Model model
 														){
 	try {		
@@ -59,7 +59,7 @@ public class ForumRepliesContorller {
 		Member member = memberService.findById((long) Math.floor(Math.random() * 3) + 1);
 		rp.setMember(member);
 		
-		ForumJpaBean fb = forumJpaService.findById(text_id);
+		ForumJpaBean fb = forumJpaService.findById(textId);
 		fb.setText_replies(fb.getText_replies()+1);
 		rp.setForumJpaBean(fb);
 		
