@@ -31,20 +31,20 @@ public class ForumBackStageController {
 		// 要Service呼叫Dao
 		ForumJpaBean fbs1 = forumJpaService.findById(text_id);
 		m.addAttribute("fbs1", fbs1);
-		return "forum_BackStage_FindById";
+		return "forum/forum_BackStage_FindById";
 	}
 	
 	//發文頁面
 		@GetMapping("/BackStageInsert")
 		public String forum(Model model) {
-			return "forum_BackStage_Insert";
+			return "forum/forum_BackStage_Insert";
 		}
 	
 	@GetMapping({"/BackStage","/BS"})
 	public String bSgetTexts(Model m) {
 		List<ForumJpaBean> fbs = forumJpaService.findAll();
 		m.addAttribute("fbs1", fbs);
-		return "forum_BackStage";
+		return "forum/forum_BackStage";
 	}
 	
 	@GetMapping("/deletebs")
@@ -54,7 +54,7 @@ public class ForumBackStageController {
 		forumJpaService.deleteById(text_id);
 		List<ForumJpaBean> fbs = forumJpaService.findAll();
 		m.addAttribute("fbs1", fbs);
-		return "redirect:BS";
+		return "redirect:forum/BS";
 
 	}
 

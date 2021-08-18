@@ -31,7 +31,7 @@ public class ForumJpaController {
 		forumJpaService.deleteById(text_id);
 		List<ForumJpaBean> fbs = forumJpaService.findAll();
 		m.addAttribute("fbs1", fbs);
-		return "redirect:/";
+		return "forum/redirect:/";
 
 	}
 
@@ -43,13 +43,13 @@ public class ForumJpaController {
 		System.out.println(fbs1);
 		forumJpaService.save(fbs1);
 		m.addAttribute("fbs1", fbs1);
-		return "forum_FindById";
+		return "forum/forum_FindById";
 	}
 
 	// 發文頁面
 	@GetMapping("/Insert")
 	public String forum(Model model) {
-		return "forum_Insert";
+		return "forum/forum_Insert";
 	}
 
 	// 主頁 查詢全部
@@ -57,7 +57,7 @@ public class ForumJpaController {
 	public String getTexts(Model m) {
 		List<ForumJpaBean> fbList = forumJpaService.findAll();
 		m.addAttribute("fbList", fbList);
-		return "forum_Main";
+		return "forum/forum_Main";
 	}
 
 }
