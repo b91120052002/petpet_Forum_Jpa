@@ -31,7 +31,7 @@ public class ForumJpaController {
 		forumJpaService.deleteById(textId);
 		List<ForumJpaBean> fbs = forumJpaService.findAll();
 		m.addAttribute("fbs1", fbs);
-		return "forum/redirect:/";
+		return "redirect:/";
 
 	}
 

@@ -226,7 +226,7 @@ function updateText(textId) {
 					<button type="button" id="submit" class="btn btn-success"
 						onclick="updateText(${fbs1.textId})">更新</button>
 					<input type="button" value="刪除" name="delete"
-						class="btn btn-danger" onclick="deleteText(${fbs1.textId})">
+						 onclick="deleteText(${fbs1.textId})">
 				</div>
 
 				<div align='left'>
@@ -297,18 +297,18 @@ function updateText(textId) {
 								<tr>
 									<td>${s.count}樓</td>
 									<td>${replymembername.member.memberid}</td>
-									<td><input type="text" id="reply_text${s.count}"
-										name="replies_text" value="${replymembername.reply_text}" />
+									<td><input type="text" id="replyText${s.count}"
+										name="replies_text" value="${replymembername.replyText}" />
 									</td>
-									<td align="right"><fmt:formatDate pattern="MM/dd HH:mm" value="${replymembername.reply_date}" /></td>
-									<td align="right"><input type="hidden" id="reply_id${s.count}"
-										name="reply_id" value="${replymembername.reply_id}" />
+									<td align="right"><fmt:formatDate pattern="MM/dd HH:mm" value="${replymembername.replyDate}" /></td>
+									<td align="right"><input type="hidden" id="replyId${s.count}"
+										name="replyId" value="${replymembername.replyId}" />
 										<button type="button" id="replydelete_${s.count}"
 											class="btn btn-danger">刪除</button></td>
 								</tr>
 							</c:forEach>
 						</c:if>
-						<fmt:formatDate pattern="MM/dd HH:mm" value="${rps.reply_date}" />
+						<fmt:formatDate pattern="MM/dd HH:mm" value="${rps.replyDate}" />
 					</table>
 				</form>
 			</div>
@@ -318,8 +318,8 @@ function updateText(textId) {
 		<div align='left'>
 			<form id="repliesf">
 				<input type="hidden" id="replytextId" name="textId"
-					value="${fbs1.textId}" /> <label for="reply_text">加入討論?</label>
-				<textarea id="reply_text" name="reply_text" required class="form-control"></textarea>
+					value="${fbs1.textId}" /> <label for="replyText">加入討論?</label>
+				<textarea id="replyText" name="replyText" required class="form-control"></textarea>
 			</form>
 			<div align="right">
 				<button type="button" id="replies" class="btn btn-success">送出回覆</button>
@@ -384,7 +384,7 @@ function updateText(textId) {
   $(document).ready(function() {
 	    $("#replies").on("click", function() {
 	    	$("#replies").prop("disabled", true);//上傳一次
-	    	var reply_text       = $("#reply_text").val(); 
+	    	var replyText       = $("#replyText").val(); 
 	        var repliesf         = $("#repliesf").serialize();
 	    	var data = new FormData($("#repliesf")[0]);
 
@@ -421,13 +421,13 @@ function updateText(textId) {
 			console.log(help);
 			
 	    	$(this).prop("disabled", true);//上傳一次
-	    	var reply_id = $("#reply_id"+help).val(); 
-			console.log(reply_id);
+	    	var replyId = $("#replyId"+help).val(); 
+			console.log(replyId);
 	    	
 	                    $.ajax({
 	                        type: 'GET',
 	                        //塞入controller
-	                        url: "/petpet/forum/deleteR/"+reply_id, 
+	                        url: "/petpet/forum/deleteR/"+replyId, 
 	                        
 	                        processData: false,  //將原本不是xml時會自動將所發送的data轉成字串(String)的功能關掉
 	                        contentType: false,  //默认值为contentType = "application/x-www-form-urlencoded".在默认情况下，内容编码类型满足大多数情况。但要上傳檔案，要設為False

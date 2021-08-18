@@ -30,19 +30,19 @@ public class RepliesServiceImpl implements RepliesService {
 	}
 	
 	@Override
-	public Optional<Replies> getRepliesById(Long reply_id) {
-		return repliesRepository.findById(reply_id); 
+	public Optional<Replies> getRepliesById(Long replyId) {
+		return repliesRepository.findById(replyId); 
 	}
 	
 	@Override
-	public Replies findById(Long reply_id) {
-		return repliesRepository.getById(reply_id);
+	public Replies findById(Long replyId) {
+		return repliesRepository.getById(replyId);
 	}
 	
 	@Override
-	public Replies delete(Long reply_id) {
-		Replies rp = repliesRepository.findById(reply_id).orElse(null);
-		repliesRepository.deleteById(reply_id);
+	public Replies delete(Long replyId) {
+		Replies rp = repliesRepository.findById(replyId).orElse(null);
+		repliesRepository.deleteById(replyId);
 		return rp;
 	}
 }

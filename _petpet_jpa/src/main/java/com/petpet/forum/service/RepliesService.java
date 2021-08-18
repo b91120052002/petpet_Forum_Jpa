@@ -11,10 +11,10 @@ public interface RepliesService {
 
 	List<Replies> findAll();
 
-	Optional<Replies> getRepliesById(Long reply_id);
+	Optional<Replies> getRepliesById(Long replyId);
 
-	Replies findById(Long reply_id);
+	Replies findById(Long replyId);
 
-	Replies delete(Long reply_id);
+	Replies delete(Long replyId);
 
 }

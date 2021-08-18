@@ -54,7 +54,7 @@ public class ForumBackStageController {
 		forumJpaService.deleteById(textId);
 		List<ForumJpaBean> fbs = forumJpaService.findAll();
 		m.addAttribute("fbs1", fbs);
-		return "redirect:forum/BS";
+		return "redirect:BS";
 
 	}
 

@@ -20,14 +20,14 @@ public class Replies {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "reply_id")
-	private long reply_id;
+	private long replyId;
 	
 	@Column(name = "reply_text")
-	private String reply_text;
+	private String replyText;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Taipei")
 	@Column(name = "reply_date")
-	private Date reply_date;
+	private Date replyDate;
 	
 	@ManyToOne
 	private Member member;
@@ -35,28 +35,28 @@ public class Replies {
 	@ManyToOne
 	private ForumJpaBean forumJpaBean;
 
-	public long getReply_id() {
-		return reply_id;
+	public long getreplyId() {
+		return replyId;
 	}
 
-	public void setReply_id(long reply_id) {
-		this.reply_id = reply_id;
+	public void setreplyId(long replyId) {
+		this.replyId = replyId;
 	}
 
-	public String getReply_text() {
-		return reply_text;
+	public String getreplyText() {
+		return replyText;
 	}
 
-	public void setReply_text(String reply_text) {
-		this.reply_text = reply_text;
+	public void setreplyText(String replyText) {
+		this.replyText = replyText;
 	}
 
-	public Date getReply_date() {
-		return reply_date;
+	public Date getreplyDate() {
+		return replyDate;
 	}
 
-	public void setReply_date(Date reply_date) {
-		this.reply_date = reply_date;
+	public void setreplyDate(Date replyDate) {
+		this.replyDate = replyDate;
 	}
 
 	public Member getMember() {
@@ -75,11 +75,11 @@ public class Replies {
 		this.forumJpaBean = forumJpaBean;
 	}
 
-	public Replies(long reply_id, String reply_text, Date reply_date, Member member, ForumJpaBean forumJpaBean) {
+	public Replies(long replyId, String replyText, Date replyDate, Member member, ForumJpaBean forumJpaBean) {
 		super();
-		this.reply_id = reply_id;
-		this.reply_text = reply_text;
-		this.reply_date = reply_date;
+		this.replyId = replyId;
+		this.replyText = replyText;
+		this.replyDate = replyDate;
 		this.member = member;
 		this.forumJpaBean = forumJpaBean;
 	}

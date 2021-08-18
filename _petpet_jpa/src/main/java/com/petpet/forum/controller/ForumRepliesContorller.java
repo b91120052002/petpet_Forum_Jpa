@@ -38,15 +38,15 @@ public class ForumRepliesContorller {
 	
 	//刪除回覆
 	@RequestMapping(path="/deleteR/{id}", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<?>  deleteReply(@PathVariable("id") Long reply_id
+	public @ResponseBody ResponseEntity<?>  deleteReply(@PathVariable("id") Long replyId
 														) {
-		repliesService.delete(reply_id);	
+		repliesService.delete(replyId);	
 		return new ResponseEntity<>("刪除成功", HttpStatus.OK);
 	}
 	
 	//新增回覆
 	@RequestMapping(path="/replies", method = RequestMethod.POST)
-	public @ResponseBody ResponseEntity<?> saveReply (@RequestParam("reply_text") String reply_text, 
+	public @ResponseBody ResponseEntity<?> saveReply (@RequestParam("replyText") String replyText, 
 														@RequestParam("textId") Long textId,
 														Model model
 														){
@@ -63,8 +63,8 @@ public class ForumRepliesContorller {
 		fb.settextReplies(fb.gettextReplies()+1);
 		rp.setForumJpaBean(fb);
 		
-		rp.setReply_date(createDate);
-		rp.setReply_text(reply_text);
+		rp.setreplyDate(createDate);
+		rp.setreplyText(replyText);
 		
 		repliesService.save(rp);
 		
