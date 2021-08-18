@@ -45,8 +45,8 @@ public class ForumImgController {
 	public @ResponseBody ResponseEntity<?> upldateproduct (	@RequestParam("textId") Long textId,
 															@RequestParam("title") String title, 
 															@RequestParam("text") String text,
-															@RequestParam("text_sub") String text_sub,
-															@RequestParam("text_type") String text_type,
+															@RequestParam("textSub") String textSub,
+															@RequestParam("textType") String textType,
 															final @RequestParam(value="image",  required = false) MultipartFile file,
 															Model model 
 															){
@@ -56,21 +56,21 @@ public class ForumImgController {
 
 			ForumJpaBean product = forumJpaService.getTextById(textId).orElse(null);
 				
-			byte[] imageData1= product.getText_image();
+			byte[] imageData1= product.gettextImage();
 			
-			product.setText_image(imageData1);
+			product.settextImage(imageData1);
 			System.out.println("這裡是image:"+imageData1);
 			//檔案不為空才讀取檔案，否則就用原本資料庫裏面的檔案
 			if (!file.isEmpty()) {	
 				byte[] imageData = file.getBytes();
-				product.setText_image(imageData);
+				product.settextImage(imageData);
 			}
 			
-			product.setText_time(createDate);
+			product.settextTime(createDate);
 			product.setTitle(title);
 			product.setText(text);
-			product.setText_sub(text_sub);
-			product.setText_type(text_type);
+			product.settextSub(textSub);
+			product.settextType(textType);
 			
 
 			forumJpaService.save(product);
@@ -95,7 +95,7 @@ public class ForumImgController {
 		log.info("textId :: " + textId);
 		product = forumJpaService.getTextById(textId);
 		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
-		response.getOutputStream().write(product.get().getText_image());
+		response.getOutputStream().write(product.get().gettextImage());
 		response.getOutputStream().close();
 	}
 	
@@ -112,8 +112,8 @@ public class ForumImgController {
 	public @ResponseBody ResponseEntity<?> uploadproduct (final @RequestParam("image") MultipartFile file,
 																@RequestParam("title") String title, 
 																@RequestParam("text") String text,
-																@RequestParam("text_sub") String text_sub,
-																@RequestParam("text_type") String text_type,
+																@RequestParam("textSub") String textSub,
+																@RequestParam("textType") String textType,
 																Model model
 																){
 	try {		
@@ -124,24 +124,24 @@ public class ForumImgController {
 		ForumJpaBean product = new ForumJpaBean();
 			
 		if(file.isEmpty()) {
-			product.setText_image(null);
+			product.settextImage(null);
 			
 		}else {
-			product.setText_image(imageData);
+			product.settextImage(imageData);
 		}
 		
-		product.setText_image(imageData);
+		product.settextImage(imageData);
 		
 		Member member = memberService.findById((long) Math.floor(Math.random() * 3) + 1);
 		product.setMember(member);
 		
-		product.setText_time(createDate);
+		product.settextTime(createDate);
 		product.setTitle(title);
 		product.setText(text);
-		product.setText_sub(text_sub);
-		product.setText_type(text_type);
-		product.setText_click((long) 0);
-		product.setText_replies((long) 0);
+		product.settextSub(textSub);
+		product.settextType(textType);
+		product.settextClick((long) 0);
+		product.settextReplies((long) 0);
 
 		forumJpaService.save(product);
 		

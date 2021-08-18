@@ -119,13 +119,13 @@
 									<td><a
 										href="<c:url value='/BackStageFindById' />?textId=${fbs.textId}">
 											${fbs.title} </a></td>
-									<td><c:out value="${fbs.text_sub}" /></td>
-									<td><c:out value="${fbs.text_type}" /></td>
+									<td><c:out value="${fbs.textSub}" /></td>
+									<td><c:out value="${fbs.textType}" /></td>
 									<td><c:out value="${fbs.text}" /></td>
 									<td><img class="picview"
 										src="${pageContext.request.contextPath}/product/display/${fbs.textId}" /></td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd aa HH:mm"
-											value='${fbs.text_time}' /></td>
+											value='${fbs.textTime}' /></td>
 									<td><a
 										href='<c:url value='/BackStageFindById' />?textId=${fbs.textId}'
 										class="edit" id="update"> <i class="material-icons"

@@ -39,7 +39,7 @@ public class ForumJpaController {
 	@GetMapping("/FindById")
 	public String findBytextId(@RequestParam("textId") Long textId, Model m) {
 		ForumJpaBean fbs1 = forumJpaService.findById(textId);
-		fbs1.setText_click(fbs1.getText_click()+1);
+		fbs1.settextClick(fbs1.gettextClick()+1);
 		System.out.println(fbs1);
 		forumJpaService.save(fbs1);
 		m.addAttribute("fbs1", fbs1);

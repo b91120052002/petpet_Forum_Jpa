@@ -27,24 +27,29 @@ public class ForumJpaBean {
 	
 	@Column(name = "title")
 	private String title;
+	
 	@Column(name = "text")
 	private String text;
+	
 	@Column(name = "text_time")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Taipei")
-	private Date text_time;
+	private Date textTime;
+	
 	@Column(name = "text_sub")
-	private String text_sub;
+	private String textSub;
+	
 	@Column(name = "text_type")
-	private String text_type;
+	private String textType;
+	
 	@Column(name = "text_image")
 	@Lob
-	private byte[] text_image;
-	@Column(name = "text_image_name")
-	private String text_image_name;
+	private byte[] textImage;
+	
 	@Column(name = "text_click")
-	private Long text_click;
+	private Long textClick;
+	
 	@Column(name = "text_replies")
-	private Long text_replies;
+	private Long textReplies;
 	
 
 	@ManyToOne
@@ -77,60 +82,52 @@ public class ForumJpaBean {
 		this.text = text;
 	}
 
-	public Date getText_time() {
-		return text_time;
+	public Date gettextTime() {
+		return textTime;
 	}
 
-	public void setText_time(Date text_time) {
-		this.text_time = text_time;
+	public void settextTime(Date textTime) {
+		this.textTime = textTime;
 	}
 
-	public String getText_sub() {
-		return text_sub;
+	public String gettextSub() {
+		return textSub;
 	}
 
-	public void setText_sub(String text_sub) {
-		this.text_sub = text_sub;
+	public void settextSub(String textSub) {
+		this.textSub = textSub;
 	}
 
-	public String getText_type() {
-		return text_type;
+	public String gettextType() {
+		return textType;
 	}
 
-	public void setText_type(String text_type) {
-		this.text_type = text_type;
+	public void settextType(String textType) {
+		this.textType = textType;
 	}
 
-	public byte[] getText_image() {
-		return text_image;
+	public byte[] gettextImage() {
+		return textImage;
 	}
 
-	public void setText_image(byte[] text_image) {
-		this.text_image = text_image;
+	public void settextImage(byte[] textImage) {
+		this.textImage = textImage;
 	}
 
-	public String getText_image_name() {
-		return text_image_name;
+	public Long gettextClick() {
+		return textClick;
 	}
 
-	public void setText_image_name(String text_image_name) {
-		this.text_image_name = text_image_name;
+	public void settextClick(Long textClick) {
+		this.textClick = textClick;
 	}
 
-	public Long getText_click() {
-		return text_click;
+	public Long gettextReplies() {
+		return textReplies;
 	}
 
-	public void setText_click(Long text_click) {
-		this.text_click = text_click;
-	}
-
-	public Long getText_replies() {
-		return text_replies;
-	}
-
-	public void setText_replies(Long text_replies) {
-		this.text_replies = text_replies;
+	public void settextReplies(Long textReplies) {
+		this.textReplies = textReplies;
 	}
 
 	public Member getMember() {
@@ -149,20 +146,19 @@ public class ForumJpaBean {
 		this.fbR = fbR;
 	}
 
-	public ForumJpaBean(Long textId, String title, String text, Date text_time, String text_sub, String text_type,
-			byte[] text_image, String text_image_name, Long text_click, Long text_replies, Member member,
+	public ForumJpaBean(Long textId, String title, String text, Date textTime, String textSub, String textType,
+			byte[] textImage, String textImage_name, Long textClick, Long textReplies, Member member,
 			List<Replies> fbR) {
 		super();
 		this.textId = textId;
 		this.title = title;
 		this.text = text;
-		this.text_time = text_time;
-		this.text_sub = text_sub;
-		this.text_type = text_type;
-		this.text_image = text_image;
-		this.text_image_name = text_image_name;
-		this.text_click = text_click;
-		this.text_replies = text_replies;
+		this.textTime = textTime;
+		this.textSub = textSub;
+		this.textType = textType;
+		this.textImage = textImage;
+		this.textClick = textClick;
+		this.textReplies = textReplies;
 		this.member = member;
 		this.fbR = fbR;
 	}

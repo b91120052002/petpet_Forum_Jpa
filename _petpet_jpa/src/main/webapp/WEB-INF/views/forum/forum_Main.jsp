@@ -206,7 +206,7 @@ fieldset {
 				<c:forEach var='ForumJpaBean' items='${fbList}'>
 					<tbody>
 						<tr>
-							<th scope="row">${ForumJpaBean.text_sub}/${ForumJpaBean.text_type}</th>
+							<th scope="row">${ForumJpaBean.textSub}/${ForumJpaBean.textType}</th>
 							<td><a
 								href="<c:url value='/FindById' />?textId=${ForumJpaBean.textId}"><img
 									class="picview"
@@ -218,7 +218,7 @@ fieldset {
 								<p>${ForumJpaBean.text}</p>
 							</td>
 							<td>
-								<fmt:formatDate pattern="MM/dd HH:mm" value="${ForumJpaBean.text_time}" />
+								<fmt:formatDate pattern="MM/dd HH:mm" value="${ForumJpaBean.textTime}" />
 								<br>
 								<c:set var="forummember" value="${ForumJpaBean.member}" />
 								<c:if test="${not empty forummember}">
@@ -227,10 +227,10 @@ fieldset {
 								</td>
 								<td>
 								人氣:
-								<c:out value="${ForumJpaBean.text_click}" />
+								<c:out value="${ForumJpaBean.textClick}" />
 								<br>
 								互動:
-								<c:out value="${ForumJpaBean.text_replies}" />
+								<c:out value="${ForumJpaBean.textReplies}" />
 								</td>
 						</tr>
 					</tbody>

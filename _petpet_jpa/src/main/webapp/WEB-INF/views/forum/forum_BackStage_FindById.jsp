@@ -122,9 +122,9 @@ function updateReply(reply_id) {
 
 								<div align='left'>
 									<div class="form-group">
-										<label for="text_sub">子版</label> <select name="text_sub"
-											class="form-control" id="text_sub">
-											<option value="${fbs1.text_sub}" selected>${fbs1.text_sub}</option>
+										<label for="textSub">子版</label> <select name="textSub"
+											class="form-control" id="textSub">
+											<option value="${fbs1.textSub}" selected>${fbs1.textSub}</option>
 											<option value="貓咪">貓咪</option>
 											<option value="狗狗">狗狗</option>
 											<option value="其他">其他</option>
@@ -132,9 +132,9 @@ function updateReply(reply_id) {
 										</select>
 									</div>
 									<div class="form-group">
-										<label for="text_type">類型</label> <select name="text_type"
-											class="form-control" id="text_type">
-											<option value="${fbs1.text_type}" selected>${fbs1.text_type}</option>
+										<label for="textType">類型</label> <select name="textType"
+											class="form-control" id="textType">
+											<option value="${fbs1.textType}" selected>${fbs1.textType}</option>
 											<option value="問題">問題</option>
 											<option value="情報">情報</option>
 											<option value="心得">心得</option>
@@ -175,7 +175,7 @@ function updateReply(reply_id) {
 									<c:out value="${forummember.memberid}" />
 									<br>
 								</c:if>
-								<fmt:formatDate pattern="MM/dd HH:mm" value="${fbs1.text_time}" />
+								<fmt:formatDate pattern="MM/dd HH:mm" value="${fbs1.textTime}" />
 							</div>
 							<div id="message" class="text-center" style="color: green;"></div>
 							<!-- 回覆 -->
@@ -255,8 +255,8 @@ function updateReply(reply_id) {
     	$("#submit").prop("disabled", true);//上傳一次
     	var title       = $("#title").val(); 
     	var text        = $("#text").val(); 
-    	var text_sub    = $("#text_sub").val(); 
-    	var text_type   = $("#text_type").val(); 
+    	var textSub    = $("#textSub").val(); 
+    	var textType   = $("#textType").val(); 
     	var file        = $("#imageupload").val(); 
         var form = $("#form").serialize();
     	var data = new FormData($("#form")[0]);

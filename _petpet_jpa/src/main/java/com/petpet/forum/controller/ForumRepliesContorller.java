@@ -60,7 +60,7 @@ public class ForumRepliesContorller {
 		rp.setMember(member);
 		
 		ForumJpaBean fb = forumJpaService.findById(textId);
-		fb.setText_replies(fb.getText_replies()+1);
+		fb.settextReplies(fb.gettextReplies()+1);
 		rp.setForumJpaBean(fb);
 		
 		rp.setReply_date(createDate);

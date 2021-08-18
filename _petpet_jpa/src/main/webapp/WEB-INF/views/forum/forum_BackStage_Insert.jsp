@@ -89,8 +89,8 @@
 								<div align='left'>
 									<div class="form-group">
 
-										<label for="text_sub">請選子版</label> <select name="text_sub"
-											class="form-control" id="text_sub">
+										<label for="textSub">請選子版</label> <select name="textSub"
+											class="form-control" id="textSub">
 											<option value="貓咪">貓咪</option>
 											<option value="狗狗">狗狗</option>
 											<option value="其他">其他</option>
@@ -98,8 +98,8 @@
 										</select>
 									</div>
 									<div class="form-group">
-										<label for="text_type">請選類型</label> <select name="text_type"
-											class="form-control" id="text_type">
+										<label for="textType">請選類型</label> <select name="textType"
+											class="form-control" id="textType">
 											<option value="問題">問題</option>
 											<option value="情報">情報</option>
 											<option value="心得">心得</option>
@@ -168,8 +168,8 @@
 				$("#submit").prop("disabled", true);//上傳一次
 				var title = $("#title").val();
 				var text = $("#text").val();
-				var text_sub = $("#text_sub").val();
-				var text_type = $("#text_type").val();
+				var textSub = $("#textSub").val();
+				var textType = $("#textType").val();
 				var file = $("#imageupload").val();
 				var form = $("#form").serialize();
 				// 利用JS的FormData格式來序列化(serialize) input 當中的 name 與 file ，才可以用AJAX方式進行檔案上傳
